@@ -1,0 +1,1258 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://src/gui/sidepanels/user_guide/user_guide.gd" type="Script" id=1]
+[ext_resource path="res://src/gui/flux/flux_spinbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/gui/flux/flux_mod_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/gui/themes/main_theme.tres" type="Theme" id=4]
+[ext_resource path="res://src/gui/components/bookmarks_list.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/boot_splash.png" type="Texture" id=6]
+[ext_resource path="res://src/gui/sidepanels/user_guide/image_block.gd" type="Script" id=7]
+[ext_resource path="res://assets/icons/18px/user_guide_paste_circuit.png" type="Texture" id=8]
+[ext_resource path="res://src/gui/sidepanels/user_guide/scroll_margin.gd" type="Script" id=9]
+[ext_resource path="res://assets/icons/18px/prefab_save_variant.png" type="Texture" id=10]
+[ext_resource path="res://src/gui/flux/flux_mod_btn_texture.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/icons/18px/table_of_contents.png" type="Texture" id=12]
+[ext_resource path="res://src/gui/sidepanels/user_guide/content.gd" type="Script" id=13]
+[ext_resource path="res://src/gui/sidepanels/user_guide/page.gd" type="Script" id=14]
+[ext_resource path="res://src/gui/sidepanels/user_guide/image.gd" type="Script" id=15]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.129412, 0.156863, 0.2, 1 )
+anti_aliasing = false
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://assets/fonts/FiraSans-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.89083, 1 )
+colors = PoolColorArray( 0.129412, 0.156863, 0.2, 0, 0.129412, 0.156863, 0.2, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 200
+
+[sub_resource type="DynamicFontData" id=19]
+font_path = "res://assets/fonts/FiraMono-Medium.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -1
+extra_spacing_char = -1
+font_data = SubResource( 19 )
+
+[sub_resource type="DynamicFontData" id=20]
+font_path = "res://assets/fonts/FiraSans-MediumItalic.ttf"
+
+[sub_resource type="DynamicFont" id=9]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -2
+font_data = SubResource( 20 )
+
+[sub_resource type="DynamicFontData" id=21]
+font_path = "res://assets/fonts/FiraSans-SemiBold.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -2
+font_data = SubResource( 21 )
+
+[sub_resource type="DynamicFontData" id=22]
+font_path = "res://assets/fonts/FiraSans-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+use_mipmaps = true
+use_filter = true
+font_data = SubResource( 22 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 0.0
+bg_color = Color( 0.117647, 0.141176, 0.180392, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.117647, 0.141176, 0.180392, 1 )
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=16]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.105882, 0.133333, 0.168627, 1 )
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=17]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.105882, 0.133333, 0.168627, 1 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=18]
+draw_center = false
+
+[node name="Control" type="Control"]
+margin_right = 1000.0
+margin_bottom = 1000.0
+rect_clip_content = true
+theme = ExtResource( 4 )
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="Body" type="PanelContainer" parent="VBoxContainer"]
+margin_right = 1000.0
+margin_bottom = 966.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Body"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 994.0
+margin_bottom = 960.0
+size_flags_vertical = 3
+custom_constants/separation = 6
+
+[node name="BookmarksList" parent="VBoxContainer/Body/HBoxContainer" instance=ExtResource( 5 )]
+margin_bottom = 954.0
+is_expanded = false
+is_toggle_mode = true
+title = "Contents"
+
+[node name="VSeparator" type="ColorRect" parent="VBoxContainer/Body/HBoxContainer"]
+margin_left = 214.0
+margin_right = 218.0
+margin_bottom = 954.0
+rect_min_size = Vector2( 4, 0 )
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Body/HBoxContainer"]
+visible = false
+margin_left = -6.0
+margin_top = -6.0
+margin_right = 994.0
+margin_bottom = 950.0
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Body/HBoxContainer"]
+margin_left = 224.0
+margin_right = 988.0
+margin_bottom = 954.0
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+script = ExtResource( 9 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer"]
+margin_right = 764.0
+margin_bottom = 954.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 12
+custom_constants/margin_left = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer"]
+margin_left = 16.0
+margin_right = 752.0
+margin_bottom = 954.0
+custom_constants/separation = 24
+
+[node name="Padding" type="Control" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_right = 736.0
+
+[node name="Title" type="Control" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 736.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 25 )
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LbTitle" type="Label" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Flow control II"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = SubResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 73.0
+margin_right = 736.0
+margin_bottom = 220.0
+custom_colors/default_color = Color( 0.545098, 0.584314, 0.631373, 1 )
+custom_fonts/mono_font = SubResource( 7 )
+custom_fonts/italics_font = SubResource( 9 )
+custom_fonts/bold_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 13 )
+bbcode_enabled = true
+bbcode_text = "In the example image we can see a simple connection between two components: The Latch at the top outputs its state to the yellow trace, because there’s a Write ink between the latch and the trace.
+
+The Buffer at the bottom receives signals from the yellow trace as input, because there’s a Read ink between the trace and the Buffer.
+
+In this example signals will flow from the Latch to the Buffer, but not the opposite."
+text = "In the example image we can see a simple connection between two components: The Latch at the top outputs its state to the yellow trace, because there’s a Write ink between the latch and the trace.
+
+The Buffer at the bottom receives signals from the yellow trace as input, because there’s a Read ink between the trace and the Buffer.
+
+In this example signals will flow from the Latch to the Buffer, but not the opposite."
+fit_content_height = true
+scroll_active = false
+
+[node name="ImageBlock" type="VBoxContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 244.0
+margin_right = 736.0
+margin_bottom = 484.0
+custom_constants/separation = 0
+script = ExtResource( 7 )
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock"]
+margin_right = 736.0
+margin_bottom = 206.0
+custom_styles/panel = SubResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock/PanelContainer"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 730.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 0, 200 )
+size_flags_vertical = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock/PanelContainer"]
+margin_left = 696.0
+margin_top = 6.0
+margin_right = 730.0
+margin_bottom = 34.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 15 )
+
+[node name="BtnPasteBlueprint" type="TextureButton" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock/PanelContainer/PanelContainer"]
+margin_left = 6.0
+margin_right = 34.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 22 )
+hint_tooltip = "Paste this circuit into the board"
+texture_normal = ExtResource( 8 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock/PanelContainer/PanelContainer/BtnPasteBlueprint" instance=ExtResource( 11 )]
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock"]
+margin_top = 206.0
+margin_right = 736.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 34 )
+custom_styles/panel = SubResource( 16 )
+
+[node name="Label" type="Label" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ImageBlock/PanelContainer2"]
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 730.0
+margin_bottom = 26.0
+text = "Description of the Image"
+autowrap = true
+
+[node name="Padding2" type="Control" parent="VBoxContainer/Body/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 508.0
+margin_right = 736.0
+margin_bottom = 508.0
+
+[node name="Footer" type="PanelContainer" parent="VBoxContainer"]
+margin_top = 966.0
+margin_right = 1000.0
+margin_bottom = 1000.0
+custom_styles/panel = SubResource( 17 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Footer"]
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 996.0
+margin_bottom = 28.0
+custom_constants/separation = 6
+alignment = 1
+
+[node name="BtnContents" type="TextureButton" parent="VBoxContainer/Footer/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 22 )
+hint_tooltip = "Toggle table of contents"
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="VBoxContainer/Footer/HBoxContainer/BtnContents" instance=ExtResource( 11 )]
+
+[node name="Control" type="Control" parent="VBoxContainer/Footer/HBoxContainer"]
+margin_left = 34.0
+margin_right = 418.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="BtnStart" type="Button" parent="VBoxContainer/Footer/HBoxContainer"]
+visible = false
+margin_left = 458.0
+margin_top = 18.0
+margin_right = 544.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 86, 0 )
+size_flags_vertical = 8
+text = "Start"
+
+[node name="FluxModButton" parent="VBoxContainer/Footer/HBoxContainer/BtnStart" instance=ExtResource( 3 )]
+
+[node name="BtnEnd" type="Button" parent="VBoxContainer/Footer/HBoxContainer"]
+visible = false
+margin_left = 504.0
+margin_top = 18.0
+margin_right = 590.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 86, 0 )
+size_flags_vertical = 8
+text = "End"
+
+[node name="FluxModButton" parent="VBoxContainer/Footer/HBoxContainer/BtnEnd" instance=ExtResource( 3 )]
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/Footer/HBoxContainer"]
+visible = false
+margin_left = 352.0
+margin_right = 372.0
+margin_bottom = 40.0
+custom_constants/separation = 20
+custom_styles/separator = SubResource( 18 )
+
+[node name="BtnPrevious" type="Button" parent="VBoxContainer/Footer/HBoxContainer"]
+margin_left = 424.0
+margin_right = 510.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 86, 0 )
+size_flags_vertical = 8
+text = "Prev"
+
+[node name="FluxModButton" parent="VBoxContainer/Footer/HBoxContainer/BtnPrevious" instance=ExtResource( 3 )]
+
+[node name="SpinBoxImproved" parent="VBoxContainer/Footer/HBoxContainer" instance=ExtResource( 2 )]
+visible = false
+margin_left = 464.0
+margin_right = 524.0
+margin_bottom = 22.0
+size_flags_vertical = 8
+
+[node name="BtnNext" type="Button" parent="VBoxContainer/Footer/HBoxContainer"]
+margin_left = 516.0
+margin_right = 602.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 86, 0 )
+size_flags_vertical = 8
+text = "Next"
+
+[node name="FluxModButton" parent="VBoxContainer/Footer/HBoxContainer/BtnNext" instance=ExtResource( 3 )]
+
+[node name="Control2" type="Control" parent="VBoxContainer/Footer/HBoxContainer"]
+margin_left = 608.0
+margin_right = 992.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Footer/HBoxContainer"]
+visible = false
+margin_left = 615.0
+margin_right = 635.0
+margin_bottom = 40.0
+custom_constants/separation = 20
+custom_styles/separator = SubResource( 18 )
+
+[node name="BtnPageToClipboard" type="TextureButton" parent="VBoxContainer/Footer/HBoxContainer"]
+visible = false
+margin_left = 964.0
+margin_right = 992.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 22 )
+hint_tooltip = "Toggle table of contents"
+texture_normal = ExtResource( 10 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="VBoxContainer/Footer/HBoxContainer/BtnPageToClipboard" instance=ExtResource( 11 )]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Content" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="TheUserGuide" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "The User Guide"
+text = "In this guide you will learn everything you need to get started with [i]Virtual Circuit Board[/i]."
+
+[node name="FiguresAndCircuits" type="Node" parent="Content/TheUserGuide"]
+script = ExtResource( 14 )
+title = "Figures and circuits"
+text = "Some pages in the User Guide make usage of images to assist with the text explanation. These images are numbered and may be refered as either [i]figures[/i] or [i]circuits[/i]. The [i]circuit[/i] images feature a button at their top-right corner that allows us to paste the example circuit into the board so we can closely inspect it.
+
+Take a look at the [i]Figure 1[/i] and the [i]Circuit 1[/i]."
+
+[node name="Figure1" type="Node" parent="Content/TheUserGuide/FiguresAndCircuits"]
+script = ExtResource( 15 )
+path = "res://assets/boot_splash.png"
+description = "Figure 1 - VCB splash screen."
+
+[node name="Circuit1" type="Node" parent="Content/TheUserGuide/FiguresAndCircuits"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/introduction_circuit.png"
+description = "Circuit 1 - Introduction circuit."
+blueprint = "VCB+AAAAFwyApAogAAAALwAAADIAAAIEAAAAAAAAJLgotS/9YLgjdQ8AVAMAAGZ4jv+hmFYqNUFNOD7/Lkdd/5L/Y///xmP/oVVebKFWe6H/JWJ6//9iiv9j/5///wBB/4EjqLFLWg0RBso4MjY3BxIAIwSFAo0AIeAQAuIILkETLKEREAEhyKQrD1k68bHCc8y86TZk105tld8OTwzPANbqnQxf49H8rdDl8RXeVZuOhgSN7TZuOWMd9fdquEdcrTRv6QCjyHbkRkLBHGKkkB2Dw8iFBJFCOwYOY8xAIBHENrycO4iJsIHG/I63uLRpjNOmuHu0KdahkvUXmwVMKb8som2uM56kx3Sd1BBg9/gtjMxQYMfgMIZhCn6o0oQLBDKZDQbCggKZhDt14tDSMEPA2qznVpSSu5lk672Gac1rzGwx3eEJ9/w9KwKdEejRrnSepGQaqtSdKi5wm5ws5WF+7pFw1kX/dbvY3ui3Aok1Gev5KRGaeenXeC/e1TuZeR215qoq3Ip9ogJy2g3qjfwKXBgOteaBqLljhOAz3lue9Zg3s1xrW+i3gZJ4siRaxT9Nx98tfXgcLMcj3ug3iD39D4hXZvNGtXirUn5pWu/auv+2Tr9q294Vp+velZvpbZMfIzJgiy2fN2k51bbUX/RHssLikSEmxY97JIsNZYXT0t1dINaOQrm+I4uRoWlq00uOUf214jQAAAAfAAAAAQAAJLgotS/9YLgjTQAAEAAAAQCzhAdYAAAAHwAAAAIAACS4KLUv/WC4I00AABAAAAEAs4QHWA=="
+
+[node name="Introduction" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Introduction"
+text = "The basics about [i]Virtual Circuit Board[/i]."
+
+[node name="EditingAndSimulating" type="Node" parent="Content/Introduction"]
+script = ExtResource( 14 )
+title = "Editing and simulating"
+text = "[t]VCB[/t] is separated in two modes, edit and simulation.
+
+While [t]editing[/t] we can use the drawing tools to modify our circuit, and the assembly editor to write programs. And during [t]simulation[/t] we can see our circuit running and interact with it.
+
+We can alternate between edit and simulation mode by clicking the [t]Edit/Simulate[/t] button in the simulation controls section of the game’s interface.
+
+Entering simulation mode may take a few seconds while the game [t]compiles[/t] the circuit."
+
+[node name="SimulationEngine" type="Node" parent="Content/Introduction"]
+script = ExtResource( 14 )
+title = "Simulation engine"
+text = "[t]VCB[/t] features a high-performant event-driven [t]simulation engine[/t].
+
+The simulation is [t]deterministic[/t], which means that a given circuit will be simulated identically every time without any sort of randomness affecting its timings.
+
+By being [t]event-driven[/t] the engine only processes active parts of circuits, allowing it to run at up to [t]millions[/t] of updates per second, depending on the player’s hardware.
+
+The tickrate (speed) of the simulation can be easily adjusted. The simulation can also be paused and manually advanced by a given amount of steps.
+"
+
+[node name="User Interface" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "User Interface"
+text = "Navigating the game's UI."
+
+[node name="NavigationAndShortcuts" type="Node" parent="Content/User Interface"]
+script = ExtResource( 14 )
+title = "Navigation and shortcuts"
+text = "[t]Pan[/t]
+Hold [i]MMB (Middle Mouse Button)[/i] and drag the mouse to pan the view. Alternatively we can also use the arrow keys to move the camera.
+
+[t]Zoom[/t]
+Rotate the [i]mouse wheel[/i] up/down to zoom in/out, or use the [i](=)[/i] and [i](-)[/i] keys. Zooming is aligned with the mouse cursor position.
+
+[i]Note: the camera controls can be rebinded in the Shortcuts menu.[/i]
+
+[t]Shortcuts[/t]
+The game’s shortcuts are listed in the [i]Shortcuts menu[/i], where they can be remapped. The Shortcuts tab is accessible through the options menu on the top-right corner of the UI [i](gear icon)[/i]."
+
+[node name="DockingSystem" type="Node" parent="Content/User Interface"]
+script = ExtResource( 14 )
+title = "Docking System"
+text = "[t]VCB[/t] features a modular and customizable interface thanks to its [t]docking system[/t]. There are four docks in total, laid out in sidebars on both sides of the screen. Each dock can be set to display one of the [i]panels[/i] available in the game, like this [i]User Guide[/i]. Most panels however act like editors that allow us to work with specific aspects of our projects. They are:
+
+[t]Circuit Editor[/t] - contains the options related to editing the circuit board, like drawing, erasing, selecting, and others.
+[t]Assembly Editor[/t] - where we can write programs that will be available in the Virtual Memory during simulation.
+[t]Notes[/t] - a space dedicated for project documentation.
+[t]User Guide[/t] - the game's reference manual.
+[t]Blueprint Library[/t] - a convenient place for saving circuit blueprints.
+[t]VMem Settings[/t] - the menu that allows us to set the position of the VMem on the board.
+[t]VMem Editor[/t] - where we can edit and visualize the data stored in the Virtual Memory.
+[t]Virtual Display[/t] - contains all settings related to the VDisplay.
+[t]Virtual Input[/t] - the configuration panel for Virtual Input device.
+
+We can swap a dock's panel by clicking on the icon on its top-left corner, beside the panel title.
+
+The docks, as well as the sidebars, can also be resized and collapsed, allowing us to further adjust the interface."
+
+[node name="RightClickBehavior" type="Node" parent="Content/User Interface"]
+script = ExtResource( 14 )
+title = "Right-click behavior"
+text = "Some UI elements exhibit a [t]secondary behavior when right-clicked[/t], the slider widget that controls the simulation speed for example, will turn into a numerical input field for precise control of the tickrate. 
+
+The UI elements with alternative actions can be spotted by the change of the mouse cursor when it passes over them, it will display a [i]plus sign and an yellow color[/i]."
+
+[node name="VirtualCircuits" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Virtual Circuits"
+text = "How circuits work in [t]VCB[/t]."
+
+[node name="DrawingBasedInterface" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Drawing-based Interface"
+text = "In [t]VCB[/t] we build circuits by drawing in a square canvas referred as [t]Board[/t] using specific colors called [t]Inks[/t].
+
+The majority of inks are either [t]Components[/t] like logic gates, or the [t]Traces[/t] used to carry signals between them, but there is also inks that are not [t]Entities[/t], i.e. which are not logical objects that get simulated. Those kind of inks are divided in two groups: [t]Space Optimization[/t], composed of inks that allow us to compact our circuits, and [t]Annotation[/t], which are simply static inks that do not interact with any others.
+
+In the next pages we’ll learn all about components and traces; the relation between inks and entities; how the connection between entities works; and the types of components available, including how each one of them behaves. Then we'll take a look at the Space Optimization inks, and how we can take advantage of them to build compact circuits."
+
+[node name="ComponentsAndTraces" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Components and Traces"
+text = "[t]Components[/t] and [t]traces[/t] are the foundation of circuits in [t]VCB[/t].
+
+[t]Components[/t] are devices that perform logic operations to change their state and output, usually based on one or more external inputs. The eight standard logic gates are all components, but [t]VCB[/t] also implements some special others.
+
+[t]Traces[/t] (wires) are [t]VCB[/t]’s equivalent of the traces/tracks printed in PCBs. Traces conduct signals and are used to connect components to one another."
+
+[node name="InksAndEntitiesI" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Inks and Entities I"
+text = "Component inks of the same type will turn into a [t]single entity[/t] when drawn side by side (left and right, or up and down). In [i]Circuit 1[/i] there are 4 groups of OR Gate inks, which will become 4 individual components during simulation. 
+
+As we can see entities can have [t]any kind of shape or size[/t] as long as their inks are neighbors.
+
+Different component inks (e.g. OR & XOR) won’t be merged when placed side by side."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/InksAndEntitiesI"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/adjacent.png"
+description = "Circuit 1 - Adjacent inks become a single entity."
+blueprint = "VCB+AAAA2W1rygqrAAAAHQAAACYAAADdAAAAAAAAETgotS/9YDgQPQYAMAAAY/L//3qo8AUB8AIZIpsAEqARSAoQAp4AIYAKqiAJnnBEJ5CgxMKmOT20PrfXfcVgOzhEqEduX59sspfAoQXV6eEf4vHz84dDxOFXGyHp2oIupuxkQ/l662lFBHwgbuI8+8/0xVnm9SCVDiH5zd/0ph8Oc0el1h1Pa8sfdPHCP3Zbzwv2me+P6swNDkQWs11pKd12dlaKIfaidLHvhi4HrqbahBgv/GWHP/OaDN0mtn7qTiq3z/ijKxfL1JDPD5/Tn2mZHwAAAB8AAAABAAAROCi1L/1gOBBNAAAQAAABADPRAywAAAAfAAAAAgAAETgotS/9YDgQTQAAEAAAAQAz0QMs"
+
+[node name="InksAndEntitiesII" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Inks and Entities II"
+text = "Different from the components, traces will turn into a single entity [t]even when they are not all the same ink[/t], this is because traces have 16 color variations, in addition to other two special trace inks (Write and Read) that indicate where connections should be made and the direction of signal flow.
+
+In the circuit below there are four traces. They all have the flow control inks (which are still part of the traces) scattered along them."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/InksAndEntitiesII"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/traces.png"
+description = "Circuit 1 - Traces of different colors will merge together."
+blueprint = "VCB+AAAAkLKjoMk4AAAAHgAAACUAAAD5AAAAAAAAEVgotS/9YFgQHQcA8AAATTg+/wAuR12hmFb/bKFWe6GhVZf/oWxWKjVB/22owANAANACGoDaDBJAEiQ4QhAokAkmQSRCJyACIiQCSCqYktYNZa6e/zmwCagP0LVeB6x3aL1a5j2RHgP0351ZnZZ84OmwZmMfGQygaicqy46z6Tk4gVxM1zf3refI7v/aPujaWWTSr5mfeYW7F9Xm31OM5a2JL+8cXcYN7Pd1YTbvVpzqbR+3Q09dM/63GPBK9rq9s+bn3ZeQI5TtvUT1++uAd2G37I4V34XWn/udfwWDw3BSyPi65Hg260vpgT8cwA8AAAAfAAAAAQAAEVgotS/9YFgQTQAAEAAAAQBT0QMsAAAAHwAAAAIAABFYKLUv/WBYEE0AABAAAAEAU9EDLA=="
+
+[node name="FlowControlI" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Flow control I"
+text = "In [t]VCB[/t] components and traces do not automatically connect to each other when placed side by side, instead they require an intermediate ink that dictates the direction of signal flow, which allows a fine control over signal transmission.
+
+The inks used for flow control are called Write and Read. They are named from the point of view of components, which generate signals to be send across traces, in other words, they [color=#e06666][b]write[/b][/color] their [color=#e06666][b]output[/b][/color] into traces. When signals arrive at their destinations the components [color=#6fa8dc][b]read[/b][/color] them to their [color=#6fa8dc][b]inputs[/b][/color]. See the example below.
+
+Component -> [color=#e06666][b]Write[/b][/color] -> Trace -> [color=#6fa8dc][b]Read[/b][/color] -> Component"
+
+[node name="FlowControlII" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Flow control II"
+text = "It is important to keep in mind that the [iw]Write[/iw] and [ir]Read[/ir] inks are still traces, despite their special behavior of making connections.
+
+When [iw]Write[/iw] or [ir]Read[/ir] inks are used in the middle of a trace they do not create a connection between the two sides of the trace since [t]connections are only made between traces and components[/t].
+
+A [iw]Write[/iw] or [ir]Read[/ir] ink in the middle of a trace is merely another part of the trace itself, just like any of the 16 trace variants."
+is_code = true
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/FlowControlII"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/trace_write_read.png"
+description = "Circuit 1 - A single trace made out of three color variants, as well as the special trace inks, Write and Read."
+blueprint = "VCB+AAAAgL5SF2BSAAAAFQAAABIAAACxAAAAAAAABegotS/9YOgE3QQAuAAAoZhW/wBWk6H/LkddTTg+/6FsVphWOiDQghES6waVoYCAxmGqHAAHO4JwGbgcXOVgZTR8IhIORuAIQwuiwQgMEDhYBLYcSMMhQgMYIHBBgDRcnoOLwBC2DuBgBOIyAXNwuzRchAUwEIFVBEyAOXFuQkyMQHtCfxGMQBqiEvhshDm9QoIb4dYAoh5Ey3AFh4AR8CSh1iuqYAEAAAAfAAAAAQAABegotS/9YOgETQAAEAAAAQDj/QALAAAAHwAAAAIAAAXoKLUv/WDoBE0AABAAAAEA4/0ACw=="
+
+[node name="FlowControlIII" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Flow control III"
+text = "In the [i]Circuit 1[/i] we can see a simple connection between two components: The Latch at the top outputs its state to the yellow trace, because there’s a [color=#e06666][b]Write[/b][/color] ink between the latch and the trace.
+
+The Buffer at the bottom receives signals from the yellow trace as input, because there’s a [color=#6fa8dc][b]Read[/b][/color] ink between the trace and the Buffer."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/FlowControlIII"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/simple_circuit.png"
+description = "Circuit 1 - In this example signals will flow from the Latch to the Buffer, but not the opposite."
+blueprint = "VCB+AAAAIZXVq13FAAAACwAAABcAAABdAAAAAAAAA/QotS/9YPQCPQIAqAAAY/+f/004Pv+hmFb/Lkddkv9j/xYAEaRQQQK7lwDPdD2lAFYACAATWAEgAIzAC4ABBAAEIADAsBJgKQEgg8HuJQ8KYAEAAAAfAAAAAQAAA/QotS/9YPQCTQAAEAAAAQDvK4AFAAAAHwAAAAIAAAP0KLUv/WD0Ak0AABAAAAEA7yuABQ=="
+
+[node name="FlowControlIV" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Flow control IV"
+text = "The flow control inks must be in direct contact with components, that is, a [color=#e06666][b]Write[/b][/color] or [color=#6fa8dc][b]Read[/b][/color] ink should have a component as one of its four [t]immediatly neighbor cells[/t] in order to form a connection with it.
+
+This is important to keep in mind when we start to work with the Space Optimization inks."
+
+[node name="UncountableConnectionI" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Uncountable connection I"
+text = "Components can [t]write[/t] to traces, [t]read[/t] from them, or [t]both[/t], but their connection is [t]only made once[/t]. This means that they are either connected (in any of the three possible ways) or they are not. 
+
+In other words the connection between two entities is [t]not countable[/t], regardless of how many points of contact they have or how large the contact area is."
+
+[node name="UncountableConnectionII" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Uncountable connection II"
+text = "The LED component changes colors based on its amount of active inputs. In the two examples at the top of the [i]Circuit 1[/i] the LEDs have the same color because both of them are only receiving a signal [t]from one trace[/t].
+
+The LEDs at the bottom have a different color because both are receiving [t]3 signals instead of one[/t]. In the left version two other traces were added, and in the right the signal from the trace was first passed to a Buffer, and from it 3 individual traces were connected to the LED. "
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/UncountableConnectionII"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/uncountable.png"
+description = "Circuit 1 - LEDs change color based on the amount of active inputs."
+blueprint = "VCB+AAAApq/xslUdAAAAEwAAACEAAADCAAAAAAAACcwotS/9YMwIZQUAqAAAY/+f/004Pv+hmFYuR13//5L/Y3Co4AUAIIMZogQDEkAiBJkCq5CohAgQiVAoEl2a2K0DYQ0gOLc7IqUKxgiZOxNfFBv9Wd5oZ3Gt0R/qo0lgYxfKGP0j3vTdgwWO1jEwb7K1wnbA6Xaj8QKhhTvueaJVL4xGgSEp1Jh3bW+0orP8VB9fDXv/cOWxeM8gI/CU4yFx9DEKDiDMVgVe4hVO6NEQfMIDfa2FPwAAAB8AAAABAAAJzCi1L/1gzAhNAAAQAAABAMfxARYAAAAfAAAAAgAACcwotS/9YMwITQAAEAAAAQDH8QEW"
+
+[node name="Image2" type="Node" parent="Content/VirtualCircuits/UncountableConnectionII"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/uncountable_xor.png"
+description = "Circuit 2 - Another example, using XOR gates."
+blueprint = "VCB+AAAAWYduNdnvAAAADwAAAB0AAACpAAAAAAAABswotS/9YMwFnQQAwAAAY/+f/004Pv+hmFYuR12udP//kv9j/12o4IUOQAMZoowBEiATKAsmwRYkQSIiJZFFmpObAa3C/pcb37Ou7ziuxLKH66QU9kOb16byk97PtRt1oZzYcDTtmdzNn1djB684Wlbup4QwsCx/WF4et7c/UuxtotsP7Cf83/t2o+HKfpUXvOyObEbnEaZIxYe0w9oBAAAAHwAAAAEAAAbMKLUv/WDMBU0AABAAAAEAx/4ACwAAAB8AAAACAAAGzCi1L/1gzAVNAAAQAAABAMf+AAs="
+
+[node name="MultipleIO" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Multiple IO"
+text = "Both components and traces support [t]multiple input and output connections[/t], including the logic gates that would usually have just two inputs and one output. 
+
+Traces are active when [t]any component[/t] that writes to them is active too, essentially behaving as OR gates.
+
+In the next page we will see how each gate component in the game behaves based on its inputs. Then we'll take a look at the general components and their special behaviors."
+
+[node name="GateComponents" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Gate Components"
+text = "Below we can see how each gate behaves based on its inputs.
+A = Active Inputs, T = Total Inputs
+
+[t]BUFFER -[/t] [i]A > 0[/i]
+[t]AND -[/t] [i]A > 0 && A == T[/i]
+[t]OR -[/t] [i]A > 0[/i]
+[t]XOR -[/t] [i]A % 2 (Odd amount of active inputs)[/i]
+
+[t]NOT -[/t] [i]!BUFFER[/i]
+[t]NAND -[/t] [i]!AND[/i]
+[t]NOR -[/t] [i]!OR[/i]
+[t]XNOR -[/t] [i]!XOR[/i]
+
+You may have noticed that the Buffer and Or gates (and their inverted counterparts) have the exact same behavior, so you may wonder why both of them are featured in the game. The answer is [t]readability[/t]. We can make our circuits a little easier to understand if we only use the Buffer to delay signals and prevent backflow, leaving the Or gate to its intended use case.
+
+However if we leave the readability aside we can also take advantage of the redundancy of components to further [t]compact[/t] our circuits since we would be able to have two \"Or gates\" or two \"Buffers\" side by side."
+
+[node name="GeneralComponentsI" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "General Components I"
+text = "On top of the basic logic gates [t]VCB[/t] features several [t]General Components[/t] that enables us to implement special behaviors in our circuits. We'll now take a look at each of those components.
+
+Some of the components have properties that can be changed by [i]right-clicking[/i] their ink on the [i]Circuit Editor panel[/i]. Those properties are [i]globally applied to all instances[/i] of the component on the board.
+
+[t]Latch ON/OFF -[/t] [i]Toggles on the rising edge of any input.[/i]
+During simulation we can [t]interact with latches using the mouse[/t]. There are two modes of interaction: Toggle, which makes the latch switch states; and Press, which will keep the latch active while the left mouse button is pressed, or until the latch is toggled by one of its inputs. The Latch has an ON and OFF variants, they behave exactly the same except that the ON version is in the active state when the simulation starts.
+
+[t]Clock -[/t] [i]Toggles every N interval of ticks.[/i]
+The clock interval can be adjusted on its right-click menu.
+
+[t]LED -[/t] [i]Active when Active Inputs > 0.[/i]
+During simulation its color will match its amount of active inputs up to 15, the palette can be customized on the LED's right-click menu and is applied to all LEDs on the board."
+
+[node name="GeneralComponentsII" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "General Components II"
+text = "[t]Timer -[/t] [i]Toggles every N interval of real life milliseconds.[/i]
+The timer interval can be adjusted on its right-click menu.
+
+[t]Random -[/t] [i]Toggles randomly on the rising edge of any input.[/i]
+By default the component uses unique time based seeds, but this can be disabled in favor of a user defined seed on its right-click menu.
+
+[t]Breakpoint -[/t] [i]Active when Active Inputs > 0.[/i]
+Triggers a breakpoint on the rising edge of its own state (not of its inputs), which pauses the simulation and reports an event in the Event Log.
+
+[t]Wireless (0 to 3) -[/t] [i]Active when Active Inputs > 0.[/i]
+Each of the four wireless inks behave like a globally connected Or gate."
+
+[node name="SpaceOptimization" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Space Optimization"
+text = "So far we've learned the fundamentals for creating circuits in [t]VCB[/t] using the several [t]Trace and Component Inks[/t], and this is already enough to build some very simple circuits. However, soon enough we'll find ourselves limited by the physical constraints of the two-dimensional space of the board, with the biggest challenge being how to use traces to connect different components when there are other traces blocking the way.
+
+This is where the [t]Space Optimization Inks[/t] come in, they give us the freedom that we need to create compact circuits in [t]VCB[/t]. In the next pages we'll take a look at each ink on this group, starting with the most fundamental of them, the Cross. But first you should know that:
+
+[t]1.[/t] Although it's more common to use the Space Optimization inks with traces they [i]work the same with components[/i].
+
+[t]2.[/t] Except for the Bus the Space Optimization inks [i]do not interact with one another when placed side by side[/i], requiring either a trace, component, or bus between them."
+
+[node name="CrossInk" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Cross Ink"
+text = "[t]Cross inks[/t] can be placed at the center of perpendicular [t]junction of traces or components[/t] to allow them to coexist independently while crossing one another. Cross inks can be only one pixel wide and must be placed at least one pixel apart, i.e. they don't chain/stack.
+
+In the two examples on the top of the [i]Circuit 1[/i] we can see the valid usage of cross inks to prevent vertical and horizontal entities from merging while crossing one another. The bottom two examples show invalid usages of cross inks.
+
+Do not forget that crosses [t]can be used with components[/t] too (like logic gates), as shown in [i]Circuit 2[/i]."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/CrossInk"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/crosses.png"
+description = "Circuit 1 - Valid Cross placements at the top, and invalid at the bottom."
+blueprint = "VCB+AAAAFkhWOk1GAAAAIwAAACcAAADlAAAAAAAAFVQotS/9YFQUfQYAZAIAAGPy////xmP/bKFW/6FVXv9meI6udP//kv9j/5+orv+hbFb/bFqosAFLAIMZAdY5EmAVKAU2wSY8IiiCJ0RICQiSQKK7Axmcz+yX4M7/o0q4q76WzFjCz2380wUzdoc+umFbizzHOevLSZlNMrpRvmPwxzJXA+6B6vlA4PfS7eQ+j6WU7ZA1D2NfylxcRg4lOLnM0cjgDpNrFDwfVswg33VaMNpnzPE2z2Rg2P3m4DIUuZHtRwcfq/r82EPHbw/KDtnAMH5CsdORVvEBAAAAHwAAAAEAABVUKLUv/WBUFE0AABAAAAEAT9UDLAAAAB8AAAACAAAVVCi1L/1gVBRNAAAQAAABAE/VAyw="
+
+[node name="Image2" type="Node" parent="Content/VirtualCircuits/CrossInk"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/cross_with_gates.png"
+description = "Circuit 2 - A single AND gate connected to three traces."
+blueprint = "VCB+AAAAufFTg3O+AAAADwAAAA8AAABzAAAAAAAAA4QotS/9YIQC7QIAyAAAY/+f/wBNOD5WoY0uR13//8Zj/2Z4jv8fAAWkUL9KARAAFgACYAFwADgAHAAQAAeAA+DgbACAF75CwAuSHUsAAUABeKnABAAAoA0A4QWAr7QBILwAAFw9oAAWAAAAHwAAAAEAAAOEKLUv/WCEAk0AABAAAAEAfyuABQAAAB8AAAACAAADhCi1L/1ghAJNAAAQAAABAH8rgAU="
+
+[node name="TunnelInk" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Tunnel Ink"
+text = "The [t]Tunnel[/t] behaves similarly to the Cross ink but based on the concept of a [t]pair of entrance and exit points[/t] that can be placed further apart.
+
+For example, a gate, trace, or bus that touches a tunnel ink [i](entrance)[/i] from the left side will connect to the first tunnel [i](exit)[/i] to the right of the entrance that has the same type of ink touching its right side, where there can be anything in the space between the entrance and exit, even [t]other tunnels for different inks[/t] as shown in [i]Circuit 1[/i]."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/TunnelInk"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/tunnel.png"
+description = "Circuit 1 - Traces of different colors passing through tunnels."
+blueprint = "VCB+AAAA8MM/0UyeAAAADQAAAA0AAABmAAAAAAAAAqQotS/9YKQBhQIA0AAAOE1H/wBNOD6hVV6hmFZTVXL/Lkddkv9jGACABsAA4AAUAxgAHEAxPqYA0AACCF4NduZhZQF4ALzEAegAxQAGXji4qhjAwAsHINM7ARYAAAAfAAAAAQAAAqQotS/9YKQBTQAAEAAAAQCfKoAFAAAAHwAAAAIAAAKkKLUv/WCkAU0AABAAAAEAnyqABQ=="
+
+[node name="MeshInk" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Mesh Ink"
+text = "The [t]Mesh[/t] is a more versatile alternative to the Wireless inks. It works similarly to the tunnel by allowing traces, buses, and components touching meshes in [t]different locations of the board[/t] to merge together."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/MeshInk"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/mesh.png"
+description = "Circuit 1 - Traces remotely connected thanks to meshes."
+blueprint = "VCB+AAAA60S1hnhIAAAAEAAAAAsAAABbAAAAAAAAAsAotS/9YMABLQIA2AAAZGpX/1ahjS5HXf+S/2P/OE1H/004PqFsVg8AsUAmiIOdsDIEJJggAAK7zBQCgAWgxMHNFlgZzQAnUDoM37VmJ4AFAAAAHwAAAAEAAALAKLUv/WDAAU0AABAAAAEAuyqABQAAAB8AAAACAAACwCi1L/1gwAFNAAAQAAABALsqgAU="
+
+[node name="BusInk" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Bus Ink"
+text = "The [t]Bus[/t] ink allows multiple gates and traces to [t]pass through the same space[/t] on the board.
+
+There are 6 color variants for the Bus, and like traces of different colors they also [t]merge together when in touch[/t]."
+
+[node name="Image" type="Node" parent="Content/VirtualCircuits/BusInk"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/bus.png"
+description = "Circuit 1 - Multiple entities can pass through the same cells using buses."
+blueprint = "VCB+AAAAMy9e1FjnAAAACwAAAAsAAABiAAAAAAAAAeQotS/9YOQAZQIA4AAAOE1H/wCS/2NNOD7/LkddoWxW/4dWoSRBev8TAPMSGlsTWlgm9NSEPXCQ03AGDoAAO5x6yoChtAEcAIgMVQzgAEBkqGKAUG8CLAAAAB8AAAABAAAB5Ci1L/1g5ABNAAAQAAABAN8qwAIAAAAfAAAAAgAAAeQotS/9YOQATQAAEAAAAQDfKsAC"
+
+[node name="AnnotationInks" type="Node" parent="Content/VirtualCircuits"]
+script = ExtResource( 14 )
+title = "Annotation Inks"
+text = "Lastly, [t]VCB[/t] also features inks which don't interact with circuits but can be used for aesthetic or documentation purposes:
+
+[t]Annotation[/t] - Meant to be used to drawn annotations on the board.
+[t]Filler[/t] - Meant to be used to fill in the empty space between inks in a circuit, so it can also be painted in the decoration layers.
+
+Both the decoration and filler inks behave the same and can be used interchangeably, the descriptions above are just the suggested usage. The reason for the existence of those two similar inks is that it makes it possible to remove just one from a circuit while keeping the other by using the Filter option of the drawing tools.
+
+For convenience the [t]None[/t] ink (i.e. empty space) was also made available in this category, being most useful when used in the Filter to restrict drawing only to empty areas."
+
+[node name="Editing" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Editing"
+text = "Building circuits in [t]VCB[/t]."
+
+[node name="Tools" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Tools"
+text = "[t]VCB[/t] has several drawing tools to make building circuits an effortless task, they are:
+
+[t]Array[/t] - a very customizable tool to draw multiple pixels simultaneously.
+[t]Pencil[/t] - draw with a large brush.
+[t]Eraser[/t] - erase pixels from the board.
+[t]Color-picker[/t] - pick an ink to make it the active one.
+[t]Selection[/t] - move, copy, paste, duplicate and more.
+[t]Bucket[/t] - fill areas with the same color.
+
+There’s also a few special features available for some tools, like the [t]Filter[t]."
+
+[node name="ArrayTool" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Array Tool"
+text = "The [t]Array tool[/t] is the most versatile in the game. It is meant to make the process of [t]drawing multiple traces[/t] or evenly spaced components much easier.
+
+In the tool options we can change the amount of pixels to draw simultaneously, as well as their spacing and angle. We can also enable the very convenient [t]Auto-cross[/t] option, which automatically takes care of putting a [t]cross ink[/t] whenever we draw over a non-empty space.
+
+Hold [t]shift[/t] to activate the [t]axis constraint[/t] while drawing to make straight lines easier."
+
+[node name="Filter" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Filter"
+text = "The [t]Filter[/t] is a feature available for the Array, Pencil and Eraser tools, it allows us to specify which inks we want to paint over. 
+
+This makes it very easy to change the color of a trace without affecting the surrounding ones. It also allows us to draw exclusively in empty areas without accidentally painting over something."
+
+[node name="Blueprints" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Blueprints"
+text = "[t]Blueprints[/t] are an easy way of sharing small segments of our circuits with others without having to send the entire project file. They work by copying the selected part of the circuit to the [t]clipboard as text[/t], which we can share with others however we wish. The reverse process is just as easy, we just need to copy the text to the clipboard then click the button that pastes the blueprint back to the circuit board.
+
+The [t]Blueprint[/t] feature is available through the [t]Selection tool[/t].
+
+[i]Note: the blueprint specification is available at the end of the User Guide in the Appendix chapter.[/i]"
+
+[node name="Layers" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Layers"
+text = "When the game is in simulation mode the component and trace inks will have different colors than they do in the editor to indicate their activation state. An ink will have a bright color when the entity it represents (i.e. a component or trace) is [t]ON[/t], and it will have a dark color when it is [t]OFF[/t]. 
+
+However we can customize these colors by switching to the [t]decoration layers[/t] while editing, they allow us to override the default colors of inks during simulation for each activation state. This enables us to heavily customize the aesthetics of our circuits.
+
+Inks that are neither components nor traces (like annotation, filler, and cross) are affected only by the [t]Decoration Low[/t] layer, because those inks are never in an [i]activated[/i] state.
+
+Using the [t]selection tool[/t] we can also [t]drag and drop[/t] an external image to apply on top of our circuit in the [t]decorations layers[/t]."
+
+[node name="EditModeTips" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Edit mode tips"
+text = "[t]1.[/t] Get used to the Array tool (and its features), it is the most versatile in [t]VCB[/t]’s toolset, followed by the Selection tool.
+
+[t]2.[/t] Take a look at the [t]Sample Projects[/t] included with the game to get inspired.
+
+[t]3.[/t] The game [t]autosaves[/t] every three minutes and before entering simulation mode. Autosaves can be loaded in the [i]Recently Saved Projects[/i] menu.
+
+[t]4.[/t] The pencil tool allows you to draw thick lines, but you should use it very sparingly since it wastes building space.
+
+[t]5.[/t] Use the available [t]shortcuts[/t].
+
+[t]6.[/t] Ink symbols can be shown for traces too by right-clicking the Ink Symbols button."
+
+[node name="SimulationModeTips" type="Node" parent="Content/Editing"]
+script = ExtResource( 14 )
+title = "Simulation mode tips"
+text = "[t]1.[/t] Use the simulation controls to change the [t]simulation speed, pause[/t] it, and to advance it [t]step-by-step[/t].
+
+[t]2.[/t] Don’t forget that during simulation we can [t]interact with latch[/t] components using the mouse.
+
+[t]3.[/t] Keep an eye on the Event Log card of the Circuit Editor panel, it displays relevant compilation and simulation warnings.
+
+[t]4.[/t] During simulation we can highlight the entire length of a trace or component by hovering it with the mouse while the Highlight Hovered Entity feature is enabled. The feature can be toggled with the \"sparks\" button at the top right corner of the interface.
+
+"
+
+[node name="VirtualDevices" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Virtual Devices"
+text = "In [t]VCB[/t] we can build a lot of things using only inks, but some projects may have specific requirements that make them very difficult or impossible to replicate with traces and components, be it due to size constraints, complexity, performance, or the need for some special behavior.
+
+For those cases we have the [t]Virtual Devices[/t], they are specialized tools at out disposal to build even more advanced circuits. We'll take a look at each of them in the next pages."
+
+[node name="VirtualMemoryI" type="Node" parent="Content/VirtualDevices"]
+script = ExtResource( 14 )
+title = "Virtual Memory I"
+text = "The Virtual Memory, or [t]VMem[/t] for short, has [t]2²⁰ addressable words of 4 bytes[/t]. This is a little over [t]one million rows of 32 bits[/t] to store up to 4 MiB of data, which should be enough to hold the most ambitious programs in [t]VCB[/t]. Note that we don’t have to use all the 32 bits available per word, e.g. when we are working with an 8-bit computer.
+
+Circuits can read and write to the [t]VMem[/t] using two sets of components that behave just like latches but have specific purposes: one set is used to write the [t]memory address[/t], and the other is used to read and write the [t]memory content[/t]. Those special components are placed by the game when the simulation is about to start, but we can configure their position while editing the circuit in the [t]VMem Settings[/t] menu. Circuits can access the Virtual Memory during simulation one address at a time, to [t]read or write[/t] data.
+
+In the VMem Settings menu, we can also configure a memory region to be [i]preserved at the end of the simulation[/i]. Note that this simply results in a copy operation, so altering the persistent region [i]won't erase any existing data stored in the project's memory[/i]."
+
+[node name="VirtualMemoryII" type="Node" parent="Content/VirtualDevices"]
+script = ExtResource( 14 )
+title = "Virtual Memory II"
+text = "With the [t]VMem Editor[/t] panel we can conveniently [t]modify the values of the Virtual Memory's words[/t] when editing our projects.
+
+Words can be displayed in either [i]hexadecimal or binary[/i] format, which also affects how input is processed. If the display mode is set to [i]hexadecimal[/i] there's no need to add the [i]\"0x\"[/i] prefix when entering values. Similarly, if words are being shown in [i]binary[/i] we can directly input binary numbers without having to include [i]\"0b\"[/i]. In both cases we can also enter [i]decimal[/i] numbers by using the [i]\"0d\"[/i] prefix.
+
+Note that for advanced use cases it is also possible to edit the Virtual Memory [i]externally[/i].
+
+The [i]VMem Editor[/i] not only allows us to adjust values in Edit mode but also serves as a [t]debugging tool during simulation[/t]. With it, we can follow the current address of the Virtual Memory, visualize the VMem's state (Red while [i]Locked[/i] and green when [i]Ready[/i]), and observe the changes to the words in real time.
+
+[t]External Editing Notes[/t]
+
+[t]-[/t] The external file must be manually created by the player.
+[t]-[/t] Since [t]VCB[/t] only reads the external file it must be manually copied/moved when the current project is saved/moved to another path.
+[t]-[/t] The external VMem file is read in big-endian order."
+
+[node name="VirtualMemoryIII" type="Node" parent="Content/VirtualDevices"]
+script = ExtResource( 14 )
+title = "Virtual Memory III"
+text = "[t]When interfacing with the VMem, you should be aware of:[/t]
+
+[t]Locking (2-tick access)[/t] - The VMem becomes [i]locked[/i] in the tick following an address change. While in this state, any input to its latches will be rejected and reported in the Event Log.
+
+[t]Content Precedence[/t] - If both address and content latches are toggled in the same tick, the content change will take precedence. That is to say, the current word will be modified first, and then the new word will be loaded.
+
+[cy][b]WARNING: VMem and Ripple-carry Counters[/b]
+
+Plain RCA counters [b]should not be used[/b] to increment the VMem's address latches. Their [i]\"rippling\"[/i] property causes latches to toggle at nearly every tick, which not only results in the [i]address jumping around[/i], but also in the [i]wrong address[/i] being set altogether, due to the VMem's locking behavior.[/cy]"
+is_code = true
+
+[node name="VirtualDisplay" type="Node" parent="Content/VirtualDevices"]
+script = ExtResource( 14 )
+title = "Virtual Display"
+text = "The [t]Virtual Display[/t] allows us to build screens with a higher pixel density and color depth than would be possible using LED components and all the circuitry required to drive them.
+
+It features [t]eight indexed color modes[/t] to render images based on a [t]customizable palette[/t], and a [t]RGB mode[/t] to render 16M+ colors. The several modes makes it possible to choose the [i]best balance between color depth and memory footprint[/i].
+
+The [t]VDisplay[/t] can have any resolution as long as it fits inside the board and has a total of 2¹⁸ pixels or less. Additionally, its buffer pointer can be modified during simulation.
+
+"
+
+[node name="VirtualInput" type="Node" parent="Content/VirtualDevices"]
+script = ExtResource( 14 )
+title = "Virtual Input"
+text = "With the [t]Virtual Input[/t] we can extend our range of interaction with circuits during simulation beyond toggling latches with the mouse.
+
+This virtual device makes it possible to bind the input from our real life [t]keyboard[/t] directly into an array of components in the board."
+
+[node name="Assembly" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Assembly"
+text = "Programming in [t]VCB[/t]."
+
+[node name="Overview" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Overview"
+text = "To simplify the process of creating programmable computers, [t]VCB[/t] implements a simple yet customizable [t]assembler[/t] that allows us to define our own instruction set.
+
+The programs we write in the Assembly Editor are assembled into machine code and stored in the Virtual Memory."
+
+[node name="AssemblyLanguage" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Assembly Language"
+text = "Before we start writing programs we must understand how the assembler translates the text we write into [t]machine code[/t]. To do so, the first concept we must get familiar with are [t]primitives[/t].
+
+[t]Primitives[/t] serve as the building blocks to write programs. They are the atomic pieces of information used by the assembler to populate the Virtual Memory."
+
+[node name="Primitives" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Primitives"
+text = "A primitive is a [t]number[/t] that can be either [t]literal[/t] (e.g. -5, 0b0001, 0xFF) or [t]non-literal[/t] (e.g. foo, bar, baz). Non-literal primitives are [t]aliases[/t] to their literal counterparts and need to be [t]defined[/t] in order to be used. Some of them can be undefined when not needed anymore, or redefined to alias another numeric literal. There are three types of non-literal primitives: Symbols, Pointers, and Labels.
+
+Before we take a closer look at each type of primitive, let's first explore the structure of the assembly's syntax and understand where the primitives fit into it."
+
+[node name="StatementsI" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Statements I"
+text = "The assembler parses code in [t]statements[/t] separated by [i]newlines[/i] or [i]semicolons[/i]. Statements can be either [t]directives[/t] or [t]instructions[/t].
+
+[t]Directives[/t] are actions or settings for the assembler itself. Among other things, they tell the assembler to define, redefine, and undefine non-literal primitives. Since directives are only commands and not data, [t]they are not translated into machine code[/t].
+
+[t]Instructions[/t] are [t]made of[/t] literal and non-literal primitives. Unlike directives, they are the actual [t]data[/t] composing our programs, and [t]will be converted into machine code[/t].
+
+When the machine code is being generated, all the primitives (numbers) in an instruction are bitwise [t]OR[/t]ed* together and stored in the VMem.
+
+*Unless an [i]expression[/i] is detected."
+
+[node name="Expressions" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Expressions"
+text = "We can [t]override the automatic ORing[/t] in instructions by using operators to form expressions. They allow us to perform bitwise and arithmetic operations with the primitives to determine how they will be evaluated before being stored in the VMem.
+
+Expressions are [i]restricted to instructions[/i] and cannot be used within directives. Note that with the exception of parentheses, operators [i]must have spaces separating them[/i]. All the supported operators are listed below.
+
+[b][cy]+[/cy][/b] Addition
+[b][cy]-[/cy][/b] Subtraction
+[b][cy]*[/cy][/b] Multiplication
+[b][cy]/[/cy][/b] Division
+[b][cy]%[/cy][/b] Modulo
+[b][cy]~[/cy][/b] Bitwise NOT
+[b][cy]&[/cy][/b] Bitwise AND
+[b][cy]|[/cy][/b] Bitwise OR
+[b][cy]^[/cy][/b] Bitwise XOR
+[b][cy]<<[/cy][/b] Bit shifting left
+[b][cy]>>[/cy][/b] Bit shifting right
+[b][cy]([/cy][/b] Begin subexpression
+[b][cy])[/cy][/b] End subexpression"
+is_code = true
+
+[node name="StatementsII" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Statements II"
+text = "[code][ca]>[/ca] [cy]symbol[/cy] [cv]foo[/cv] [cg]0b0001[/cg]
+[ca]>[/ca] [cv]foo[/cv] [cg]0b1000[/cg][cy];[/cy] [cg]0xF7[/cg][/code]
+
+In the above example we have 3 statements, the first is a [t]directive[/t] and the two others are [t]instructions[/t]. The directive is just defining a primitive named [t]foo[/t], and it won’t be assembled into machine code as it does not contain any data.
+
+But the following statement, [t]foo 0b1000[/t], does have primitives, two of them: it has the non-literal [t]foo[/t] (0b0001) defined earlier, and a numeric literal (0b1000). These two primitives will be [t]OR[/t]ed together to become a single instruction (0b1001) which will be stored in the Virtual Memory, followed by the third statement in the next address."
+is_code = true
+
+[node name="Assembler" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Assembler"
+text = "When the game begins to translate instructions into machine code it [t]skips the first word[/t] of the Virtual Memory [i](address 0 is reserved and should not be used)[/i] and starts at address 1. The assembled data is stored in [t]big-endian order[/t] with negative values represented in [t]Two's Complement[/t].
+
+The assembler ignores blank lines and comments in the code, which are indicated with a [t]#[/t] symbol.
+
+[code][ca]>[/ca] [ce]# This is a comment.[/ce]
+[ca]>[/ca] [cv]psh[/cv][cy];[/cy] [cv]cal[/cv] [cb]Print[/cb][cy];[/cy] [cv]ret[/cv] [ce]# Another comment.[/ce][/code]
+
+Now that we’ve learned about the assembly’s syntax and how instructions become machine code we can take a closer look into each type of [t]primitive[/t]."
+is_code = true
+
+[node name="PrimitivesNumerics" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Primitives - Numerics"
+text = "[t]Numerics[/t] are the literal primitives. They can be expressed in base 10, hexadecimal, or binary (floating points are not supported), and must be no larger than 32 bits in order to fit into the words of the Virtual Memory.
+
+[code][ca]>[/ca] [cg]10515545[/cg][cy];[/cy] [cg]-1[/cg][cy];[/cy] [cg]0xFFFF[/cg][cy];[/cy] [cg]0b01101010[/cg][/code]
+
+Underscores can be used in numerics to improve their readability.
+
+[code][ca]>[/ca] [cg]1_000_000[/cg][cy];[/cy] [cg]0b0000_1000[/cg][/code]"
+is_code = true
+
+[node name="PrimitivesSymbols" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Primitives - Symbols"
+text = "[t]Symbols[/t] are the primitives for user-defined values, they are useful to create [t]mnemonics[/t] for opcodes. They must be defined with an [t]identifier[/t] followed by a [t]numeric literal[/t]. Optionally, symbols can also be redefined or undefined.
+
+[code][ca]>[/ca] [cy]symbol[/cy] [cv]add[/cv] [cg]0xFF[/cg] [ce]# “add” from now on means “0xFF”.[/ce]
+[ca]>[/ca] [cy]resymb[/cy] [cv]add[/cv] [cg]125[/cg]  [ce]# “add” from now on means “125”.[/ce]
+[ca]>[/ca] [cy]unsymb[/cy] [cv]add[/cv]      [ce]# “add” is undefined.[/ce][/code]
+
+Symbols are highlighted in purple if they remain defined until the end of the program, otherwise they default to red."
+is_code = true
+
+[node name="PrimitivesPointers" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Primitives - Pointers"
+text = "[t]Pointers[/t] are the primitives for memory addresses. Due to the pointer’s nature a statement that defines it is [t]both a directive and an instruction[/t]. A pointer can be defined with a [t]numeric literal[/t] address, or have one automatically assigned to it using the [i]inline[/i] keyword. Use [t]repoint[/t] and [t]unpoint[/t] to delimit its scope.
+
+In the example below, we store the number [i]30[/i] at the address [i]0xFF[/i], which is now aliased to [i]\"foo\"[/i].
+
+[code][ca]>[/ca] [cy]pointer[/cy] [cr]foo[/cr] [cg]0xFF 30[/cg][/code]
+
+In this second case, we store the number [i]5[/i] between the previous and next instructions using the [i]inline[/i] keyword. The actual address will be automatically determined by the assembler.
+
+[code][ca]>[/ca] [cy]pointer[/cy] [cr]bar[/cr] [cm]inline[/cm] [cg]5[/cg][/code]"
+is_code = true
+
+[node name="PrimitivesLabels" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Primitives - Labels"
+text = "[t]Labels[/t] are also primitives for memory addresses, with a few key differences: 1. They point to the [t]first instruction[/t] that comes after their definition; 2. They [t]cannot be undefined[/t]; and 3. They have [t]global scope[/t] and can be used in statements that come [t]before[/t] their definition. Labels can be defined with the [t]@[/t] symbol.
+
+[code][ca]>[/ca] [cy]@[/cy] [cb]Sum[/cb]
+[ca]>[/ca] [cv]lia[/cv] [cg]10[/cg][cy];[/cy] [cv]ldb[/cv] [cr]value[/cr][cy];[/cy] [cv]add[/cv]
+
+[ca]>[/ca] [cy]@[/cy] [cb]MyOtherFunction[/cb]
+[ca]>[/ca] [cv]psh[/cv][cy];[/cy] [cv]cal[/cv] [cb]Sum[/cb][cy];[/cy] [cv]ret[/cv] [ce]# “Sum” is an alias to lia 10’s VMem address.[/ce]"
+is_code = true
+
+[node name="Review" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Review"
+text = "Before diving into more advanced features, let's take a moment to review what we have learned so far.
+
+We write assembly code using [t]statements[/t] separated by [i]newlines[/i] or [i]semicolons[/i]. [t]Directive[/t] statements define the [t]primitives[/t] (numbers) that we use in [t]instruction[/t] statements, which are the actual [t]data[/t] of our programs.
+
+When generating the machine code, the assembler takes all the primitives in an instruction and [t]OR[/t]s them together, unless we form an expression using [t]operators[/t].
+
+The [t]pointer[/t] primitive is special because its definition or redefinition is [t]both a directive and an instruction[/t]. The statement defining a pointer is stored in the specified address of the Virtual Memory, unless the [i]inline[/i] keyword is used."
+
+[node name="OriginDirective" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Origin Directive"
+text = "Using the [t]origin[/t] directive we can specify the memory address where the assembler should store the machine code generated for the subsequent instructions. This directive is particularly useful when we want to [i]store data separately[/i] from the program itself.
+
+[code][ca]>[/ca] [ck]origin[/ck] [cg]0xFF00[/cg]
+[ca]>[/ca] [cg]0b1010[/cg] [ce]# Stored at address 0xFF00.[/ce]
+[ca]>[/ca] [cg]0b0101[/cg] [ce]# Stored at address 0xFF01.[/ce][/code]
+
+We can also use the keyword [t]orgprev[/t] to revert the most recent origin directive, or [t]orgbase[/t] to revert them all. For the example below, consider that after translating some instructions to machine code, the assembler is at the address [i]0xA1[/i].
+
+[code][ca]>[/ca] [ck]origin[/ck] [cg]0xB1[/cg]
+[ca]>[/ca] [ck]origin[/ck] [cg]0xC1[/cg]
+[ca]>[/ca] [ck]origin[/ck] [cg]0xD1[/cg]
+[ca]>[/ca] [ck]origin[/ck] [cg]0xE1[/cg]
+[ca]>[/ca] [ck]origin[/ck] [cm]orgprev[/cm] [ce]# Address set to 0xD1.[/ce]
+[ca]>[/ca] [ck]origin[/ck] [cm]orgprev[/cm] [ce]# Address set to 0xC1.[/ce]
+[ca]>[/ca] [ck]origin[/ck] [cm]orgbase[/cm] [ce]# Address set to 0xA1.[/ce][/code]"
+is_code = true
+
+[node name="MacrosI" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Macros I"
+text = "[t]Macros[/t] allow us to improve the readability of our programs by abstracting the expressions required for complex instructions.
+
+Let's consider a hypothetical [t]mov[/t] instruction as an example. In this instruction, bits [7:4] determine the opcode, bits [3:2] represent the source register, and bits [1:0] indicate the destination register. Due to this instruction format, we can't rely on the assembler's automatic [i]OR[/i]ing, as we need to offset the position of the registers. To achieve this, we can use an expression that bitshifts the source register to the correct position and [i]OR[/i]s all the arguments together, as shown in the example below.
+
+[code][ca]>[/ca] [cv]mov[/cv] [cy]|[/cy] [cv]rgA[/cv] [cy]<<[/cy] [cg]2[/cg] [cy]|[/cy] [cv]rgB[/cv]
+[ca]>[/ca] [cv]mov[/cv] [cy]|[/cy] [cv]rgB[/cv] [cy]<<[/cy] [cg]2[/cg] [cy]|[/cy] [cv]rgA[/cv][/code]
+
+However, it would be very inconvenient to write long expressions like these for every instruction in our program. Let's see how we can avoid this scenario with the help of a [i]macro[/i].
+
+[code][ca]>[/ca] [cn]macro[/cn] [co]mov[/co] [cy]{[/cy][cg]0b11000000[/cg] [cy]|[/cy] [cr]a[/cr][cy]? <<[/cy] [cg]2[/cg] [cy]|[/cy] [cr]b[/cr][cy]?}[/cy]
+[ca]>[/ca] [co]mov[/co] [cv]rgA[/cv] [cv]rgB[/cv]
+[ca]>[/ca] [co]mov[/co] [cv]rgB[/cv] [cv]rgA[/cv][/code]
+
+As demonstrated above, thanks to [i]macros[/i], our instructions can be made simpler and more concise, allowing us to create longer and more complex programs without compromising readability."
+is_code = true
+
+[node name="MacrosII" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Macros II"
+text = "To define a macro we begin with the [t]macro[/t] keyword, followed by an [t]identifier[/t], and finally, the [t]body[/t] enclosed in curly braces. The macro's arguments are indicated with a [t]lowercase letter followed by a question mark[/t]. When the macro is expanded, every occurrence of the [i]\"a?\"[/i] placeholder will be replaced with the first argument, followed by the [i]\"b?\"[/i] placeholder for the second argument, and so on. Note that macros [t]cannot be chained/nested[/t], neither in their definition nor in their usage.
+
+Like symbols and pointers, macros can also be redefined and undefined, using the keywords [t]remac[/t] and [t]unmac[/t], respectively.
+
+Error messages concerning macros can be distinguished by their color. Errors flagged by the assembler are presented in [i]red[/i], while the preprocessor highlights them in [i]orange[/i]."
+is_code = true
+
+[node name="Bookmarks" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "Bookmarks"
+text = "Bookmarks provide a [t]quick way to navigate[/t] through our code by adding labels beside the assembly editor, which we can click to go to the lines where they were defined. Bookmarks are ignored by the assembler, use [t]bookmark[/t] and [t]sub_bookmark[/t] to declare them.
+
+[code][ca]>[/ca] [ca]bookmark[/ca] [cr]FunctionForSum[/cr] [ce]# Topic bookmark.[/ce]
+[ca]>[/ca] [cv]lia[/cv] [cg]10[/cg][cy];[/cy] [cv]ldb[/cv] [cr]value[/cr][cy];[/cy] [cv]add[/cv]
+
+[ca]>[/ca] [ca]sub_bookmark[/ca] [cr]PrintSumResult[/cr] [ce]# Subtopic bookmark.[/ce]
+[ca]>[/ca] [cv]psh[/cv][cy];[/cy] [cv]cal[/cv] [cb]MyFunction[/cb][cy];[/cy] [cv]ret[/cv]"
+is_code = true
+
+[node name="ExternalEditing" type="Node" parent="Content/Assembly"]
+script = ExtResource( 14 )
+title = "External Editing"
+text = "If you would like to use an [t]external text editor[/t] to write the assembly code you may do so by enabling the respective option in the [i]External Editing[/i] button, located below the [i]Bookmarks[/i] icon in the [i]Assembly Editor[/i] panel. The game will then read the contents of a text file with the same name and path as the current project, ending with the [i]\".vcbasm\"[/i] extension.
+
+[t]External Editing Notes[/t]
+
+[t]-[/t] The external file must be manually created by the player.
+[t]-[/t] Since [t]VCB[/t] only reads the external file it must be manually copied/moved when the current project is saved/moved to another path."
+is_code = true
+
+[node name="Conclusion" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Conclusion"
+text = "Wrapping up."
+
+[node name="SampleProjects" type="Node" parent="Content/Conclusion"]
+script = ExtResource( 14 )
+title = "Sample Projects"
+text = "[t]VCB[/t] comes with [t]sample projects[/t] to showcase some of the circuits that can be build in the game. The [i]32-bit Computer[/i] project for example features an ALU, an instruction decoder that accesses the VMem, and a scrolling display.
+
+The sample projects are available through the [t]open book icon[/t] in the top-right corner of the UI."
+
+[node name="Figure1" type="Node" parent="Content/Conclusion/SampleProjects"]
+script = ExtResource( 15 )
+path = "res://assets/user_guide/sample_computer_on.png"
+description = "Figure 1 - 32-bit Computer included in the sample projects."
+
+[node name="DevelopersNote" type="Node" parent="Content/Conclusion"]
+script = ExtResource( 14 )
+title = "Developer's Note"
+text = "You should now have all the essential knowledge required to start playing with [t]Virtual Circuit Board[/t], but don’t forget to take a look at the included Sample Projects to see all the theory you’ve learned so far applied in practice.
+
+If you need any help with [t]VCB[/t] feel free to reach me out in the game’s communities.
+
+I hope you have as much fun playing the game as I had developing it.
+
+
+[t]– Mause[/t]"
+
+[node name="Appendix" type="Node" parent="Content"]
+script = ExtResource( 14 )
+title = "Appendix"
+text = "Supplementary information."
+
+[node name="BlueprintSpecification" type="Node" parent="Content/Appendix"]
+script = ExtResource( 14 )
+title = "Blueprint Specification"
+text = "The details of the blueprint format can be found below.
+
+[t]Overview[/t]
+- Blueprints begin with the [i]\"VCB+\"[/i] prefix.
+- Data is encoded in Base64.
+- Bytes are in big-endian order.
+
+[t]Header[/t]
+3-byte blueprint version
+6-byte checksum (truncated SHA-1) of the remaining characters of the blueprint string
+4-byte width
+4-byte height
+
+[t]Layer Block(s)[/t]
+4-byte block size
+4-byte layer id (Logic = 0, Deco On = 1, Deco Off = 2)
+4-byte uncompressed buffer size
+N-byte zstd-compressed RGBA8 buffer
+
+[t]Text Block(s)[/t]
+4-byte block size
+4-byte data id (Name = 1024, Description = 1025, Tags = 1026)
+4-byte uncompressed buffer size
+N-byte zstd-compressed UTF-8 buffer
+
+[t]Notes[/t]
+- The Logic layer block must be present in all blueprints.
+- Decoration layer blocks are optional but if used both of them must be included.
+- All the text blocks are optional.
+
+[t]Legacy Blueprints[/t]
+- Blueprints created in early versions of VCB were encoded with a legacy format. They can be identified by the prefix [i]\"KLUv/\"[/i]."
+
+[node name="About" type="Node" parent="Content/Appendix"]
+script = ExtResource( 14 )
+title = "About"
+text = "[i]Virtual Circuit Board[/i]
+Copyright (c) 2022-2024 Reverie Foundry. All rights reserved.
+
+[i]Made with Godot Engine.[/i]
+Third-party licenses are available at the installation directory."
+
+[node name="Page" type="Node" parent="Content"]
+script = ExtResource( 14 )
+
+[node name="Image" type="Node" parent="Content"]
+script = ExtResource( 15 )
+path = "res://assets/boot_splash.png"

@@ -1,0 +1,273 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/gui/dialogs/shortcut_entry.gd" type="Script" id=1]
+[ext_resource path="res://src/gui/dialogs/dialog_shortcuts.gd" type="Script" id=2]
+[ext_resource path="res://src/gui/themes/main_theme.tres" type="Theme" id=3]
+[ext_resource path="res://src/gui/flux/flux_mod_popup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/gui/flux/flux_mod_button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/gui/flux/flux_btn_checkbox.tscn" type="PackedScene" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+border_color = Color( 0.164706, 0.207843, 0.254902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+shadow_color = Color( 0.054902, 0.0745098, 0.117647, 0.156863 )
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id=2]
+draw_center = false
+
+[node name="DialogShortcuts" type="Popup"]
+margin_right = 600.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 620, 500 )
+theme = ExtResource( 3 )
+popup_exclusive = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_right = 620.0
+margin_bottom = 500.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 20
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 580.0
+margin_bottom = 480.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 540.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Shortcuts"
+align = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 540.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 0, 20 )
+custom_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 20.0
+custom_constants/separation = 10
+custom_styles/separator = SubResource( 2 )
+
+[node name="LbAction" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 266.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.917647, 1 )
+text = "Action"
+align = 1
+valign = 1
+
+[node name="VSeparator3" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 266.0
+margin_right = 274.0
+margin_bottom = 20.0
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 2 )
+
+[node name="LbKyeOrButton" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 274.0
+margin_top = 1.0
+margin_right = 530.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.917647, 1 )
+text = "Key or Button"
+align = 1
+valign = 1
+
+[node name="VSeparator2" type="VSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 530.0
+margin_right = 540.0
+margin_bottom = 20.0
+custom_constants/separation = 10
+custom_styles/separator = SubResource( 2 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 540.0
+margin_bottom = 388.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_right = 540.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+margin_left = 10.0
+margin_right = 530.0
+margin_bottom = 318.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="ShortcutEntry" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_right = 520.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 20 )
+custom_constants/separation = 8
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ShortcutEntry"]
+margin_top = 2.0
+margin_right = 256.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Action Name"
+clip_text = true
+
+[node name="Btn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ShortcutEntry"]
+margin_left = 264.0
+margin_right = 520.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModButton" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/ShortcutEntry/Btn" instance=ExtResource( 6 )]
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 520.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 30 )
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.917647, 1 )
+text = "Section Title"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HardcodedEntry" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+margin_top = 68.0
+margin_right = 520.0
+margin_bottom = 88.0
+rect_min_size = Vector2( 0, 20 )
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HardcodedEntry"]
+margin_top = 1.0
+margin_right = 256.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Action Name"
+clip_text = true
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/HardcodedEntry"]
+margin_left = 264.0
+margin_top = 1.0
+margin_right = 520.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Action Name"
+align = 1
+clip_text = true
+
+[node name="LbAssemblyEditor" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 40 )
+custom_colors/font_color = Color( 0.827451, 0.854902, 0.917647, 1 )
+text = "Assembly Editor"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CkBtn" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource( 7 )]
+visible = false
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 48.0
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+margin_top = 410.0
+margin_right = 520.0
+margin_bottom = 422.0
+custom_constants/separation = 12
+custom_styles/separator = SubResource( 2 )
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 404.0
+margin_right = 540.0
+margin_bottom = 422.0
+text = "When binding an action press \"Esc\" to cancel, and \"Backspace\" to clear."
+align = 1
+valign = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 438.0
+margin_right = 540.0
+margin_bottom = 460.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="BtnReset" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 209.0
+margin_right = 261.0
+margin_bottom = 22.0
+size_flags_horizontal = 4
+text = "Reset"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/BtnReset" instance=ExtResource( 6 )]
+
+[node name="BtnClose" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 281.0
+margin_right = 331.0
+margin_bottom = 22.0
+size_flags_horizontal = 4
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModButton" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/BtnClose" instance=ExtResource( 6 )]
+
+[node name="FluxModPopup" parent="." instance=ExtResource( 5 )]
+is_keep_centered_on_resize = true

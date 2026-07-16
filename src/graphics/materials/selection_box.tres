@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://src/graphics/shaders/selection_box.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/opacity = 0.2
+shader_param/width = 2.0
+shader_param/size = Vector2( 673, 251 )
+shader_param/zoom = 1.0
+shader_param/is_move = false

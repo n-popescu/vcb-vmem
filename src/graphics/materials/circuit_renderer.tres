@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://src/graphics/shaders/circuit_renderer.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/sm_highlight_entity = null
+shader_param/sm_is_render_entity_highlight = true
+shader_param/is_render_mode_simulation = false
+shader_param/sm_is_render_with_paint = true
+shader_param/ed_is_layer_paint_type_on = true
+shader_param/ed_paint_overlay_intensity = 0.0
+shader_param/busentities_sidelength = 0

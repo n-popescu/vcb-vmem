@@ -1,0 +1,2884 @@
+[gd_scene load_steps=160 format=2]
+
+[ext_resource path="res://src/main/compiler.gd" type="Script" id=1]
+[ext_resource path="res://src/world/camera.gd" type="Script" id=2]
+[ext_resource path="res://src/gui/scripts/header.gd" type="Script" id=3]
+[ext_resource path="res://src/main/systems.gd" type="Script" id=4]
+[ext_resource path="res://src/gui/flux/flux_btn_checkbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/main/simulator.gd" type="Script" id=6]
+[ext_resource path="res://src/gui/dialogs/dialog_unsaved.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/gui/dialogs/dialog_file.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/graphics/materials/circuit_renderer.tres" type="Material" id=9]
+[ext_resource path="res://src/gui/scripts/ink_symbols_overlay_popup.gd" type="Script" id=10]
+[ext_resource path="res://src/world/cursor_board.gd" type="Script" id=11]
+[ext_resource path="res://assets/fonts/FiraMono-Medium.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://src/gui/scripts/label_autosaving.gd" type="Script" id=13]
+[ext_resource path="res://src/world/vdisplay_renderer.gd" type="Script" id=14]
+[ext_resource path="res://assets/icons/18px/painting.png" type="Texture" id=15]
+[ext_resource path="res://src/graphics/materials/circuit_post_processing.tres" type="Material" id=16]
+[ext_resource path="res://src/graphics/materials/background.tres" type="Material" id=17]
+[ext_resource path="res://src/gui/scripts/simulation_controls.gd" type="Script" id=18]
+[ext_resource path="res://src/editor/remove_bg.shader" type="Shader" id=19]
+[ext_resource path="res://src/editor/file_system.gd" type="Script" id=20]
+[ext_resource path="res://src/gui/scripts/file_label.gd" type="Script" id=21]
+[ext_resource path="res://src/graphics/materials/progress_bar.tres" type="Material" id=22]
+[ext_resource path="res://src/gui/scripts/version_label.gd" type="Script" id=23]
+[ext_resource path="res://src/editor/editor.gd" type="Script" id=24]
+[ext_resource path="res://src/world/circuit_renderer.gd" type="Script" id=25]
+[ext_resource path="res://assets/fonts/FiraSans-Bold.ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://src/graphics/materials/vdisplay_renderer.tres" type="Material" id=27]
+[ext_resource path="res://src/graphics/materials/header.tres" type="Material" id=28]
+[ext_resource path="res://src/gui/docking/panel_swap_popup.gd" type="Script" id=29]
+[ext_resource path="res://src/gui/themes/panels/sb_popup.tres" type="StyleBox" id=30]
+[ext_resource path="res://src/gui/dialogs/dialog_settings.tscn" type="PackedScene" id=31]
+[ext_resource path="res://src/gui/dialogs/dialog_quit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://src/gui/themes/main_theme.tres" type="Theme" id=33]
+[ext_resource path="res://src/main/gdshader_loader.gd" type="Script" id=34]
+[ext_resource path="res://assets/icons/18px/layer_logic.png" type="Texture" id=35]
+[ext_resource path="res://assets/icons/18px/start_paused.png" type="Texture" id=36]
+[ext_resource path="res://src/gui/scripts/gui.gd" type="Script" id=37]
+[ext_resource path="res://assets/icons/18px/sidepanels.png" type="Texture" id=38]
+[ext_resource path="res://assets/icons/18px/sidebar_left.png" type="Texture" id=39]
+[ext_resource path="res://src/gui/flux/flux_mod_btn_texture.tscn" type="PackedScene" id=40]
+[ext_resource path="res://assets/icons/18px/maximize_vertical.png" type="Texture" id=41]
+[ext_resource path="res://src/gui/dialogs/dialog_seizure_warning.tscn" type="PackedScene" id=42]
+[ext_resource path="res://assets/icons/18px/sidebar_right.png" type="Texture" id=43]
+[ext_resource path="res://src/editor/recent_and_sample_projects.gd" type="Script" id=44]
+[ext_resource path="res://src/main/settings.gd" type="Script" id=45]
+[ext_resource path="res://assets/icons/18px/file_new.png" type="Texture" id=46]
+[ext_resource path="res://assets/icons/18px/text.png" type="Texture" id=47]
+[ext_resource path="res://assets/icons/18px/undo.png" type="Texture" id=48]
+[ext_resource path="res://assets/icons/18px/file_open.png" type="Texture" id=49]
+[ext_resource path="res://assets/icons/18px/redo.png" type="Texture" id=50]
+[ext_resource path="res://src/gui/docking/context.gd" type="Script" id=51]
+[ext_resource path="res://assets/icons/18px/lightning.png" type="Texture" id=52]
+[ext_resource path="res://src/gui/dialogs/dialog_about.tscn" type="PackedScene" id=53]
+[ext_resource path="res://assets/icons/18px/file_save.png" type="Texture" id=54]
+[ext_resource path="res://assets/icons/18px/file_save_as.png" type="Texture" id=55]
+[ext_resource path="res://assets/icons/18px/watch.png" type="Texture" id=56]
+[ext_resource path="res://src/gui/dialogs/dialog_shortcuts.tscn" type="PackedScene" id=57]
+[ext_resource path="res://assets/icons/18px/book.png" type="Texture" id=58]
+[ext_resource path="res://src/gui/dialogs/dialog_warning.tscn" type="PackedScene" id=59]
+[ext_resource path="res://assets/icons/18px/pause.png" type="Texture" id=60]
+[ext_resource path="res://assets/icons/18px/arrow_next.png" type="Texture" id=61]
+[ext_resource path="res://src/gui/dialogs/background_for_dialogs.gd" type="Script" id=62]
+[ext_resource path="res://src/gui/docking/dock.gd" type="Script" id=63]
+[ext_resource path="res://src/gui/dialogs/dialog_changelog.tscn" type="PackedScene" id=64]
+[ext_resource path="res://src/editor/history.gd" type="Script" id=65]
+[ext_resource path="res://src/gui/reusable_scripts/button_event.gd" type="Script" id=66]
+[ext_resource path="res://src/gui/flux/flux_mod_button.tscn" type="PackedScene" id=67]
+[ext_resource path="res://assets/icons/18px/flask.png" type="Texture" id=68]
+[ext_resource path="res://src/gui/scripts/tooltip_input_disabler.gd" type="Script" id=69]
+[ext_resource path="res://src/graphics/materials/downsampling_selection.tres" type="Material" id=70]
+[ext_resource path="res://src/graphics/materials/downsampling_circuit.tres" type="Material" id=71]
+[ext_resource path="res://src/graphics/materials/ink_symbols_overlay.tres" type="Material" id=72]
+[ext_resource path="res://src/graphics/materials/dithering.tres" type="Material" id=73]
+[ext_resource path="res://assets/icons/18px/symbols_overlay.png" type="Texture" id=74]
+[ext_resource path="res://assets/icons/18px/flat_rendering.png" type="Texture" id=75]
+[ext_resource path="res://assets/icons/18px/highlight.png" type="Texture" id=76]
+[ext_resource path="res://src/gui/ink_switch_menu/ink_switch_menu.tscn" type="PackedScene" id=77]
+[ext_resource path="res://assets/icons/18px/slider_real.png" type="Texture" id=78]
+[ext_resource path="res://src/graphics/materials/texture_debug.tres" type="Material" id=79]
+[ext_resource path="res://src/world/subdivided_sprite.gd" type="Script" id=80]
+[ext_resource path="res://src/gui/scripts/alert_bar.gd" type="Script" id=81]
+[ext_resource path="res://assets/icons/18px/viewport.png" type="Texture" id=82]
+[ext_resource path="res://assets/icons/18px/arrow_prev.png" type="Texture" id=83]
+[ext_resource path="res://assets/icons/18px/keycap.png" type="Texture" id=84]
+[ext_resource path="res://src/world/vinput_interface_renderer.gd" type="Script" id=85]
+[ext_resource path="res://src/gui/reusable_scripts/button_texture_event.gd" type="Script" id=86]
+[ext_resource path="res://src/gui/docking/sidebar.gd" type="Script" id=87]
+[ext_resource path="res://src/world/vinput_processor.gd" type="Script" id=88]
+[ext_resource path="res://assets/icons/18px/hex.png" type="Texture" id=89]
+[ext_resource path="res://src/assembler/preprocessor.gd" type="Script" id=90]
+[ext_resource path="res://assets/icons/18px/blueprint_library.png" type="Texture" id=91]
+[ext_resource path="res://assets/icons/18px/shape_circle.png" type="Texture" id=93]
+[ext_resource path="res://src/main/main.gd" type="Script" id=95]
+[ext_resource path="res://assets/icons/18px/layers.png" type="Texture" id=111]
+[ext_resource path="res://assets/icons/18px/assembly_code.png" type="Texture" id=112]
+[ext_resource path="res://assets/icons/18px/gear_medium.png" type="Texture" id=113]
+[ext_resource path="res://assets/icons/18px/shape_diamond.png" type="Texture" id=115]
+[ext_resource path="res://assets/icons/18px/window_minimize.png" type="Texture" id=122]
+[ext_resource path="res://assets/icons/18px/window_restore.png" type="Texture" id=124]
+[ext_resource path="res://assets/icons/18px/display.png" type="Texture" id=141]
+[ext_resource path="res://src/gui/scripts/window_buttons.gd" type="Script" id=144]
+[ext_resource path="res://src/gui/scripts/button_settings.gd" type="Script" id=145]
+[ext_resource path="res://src/gui/scripts/button_toggle_run.gd" type="Script" id=146]
+[ext_resource path="res://src/world/selection_box.gd" type="Script" id=160]
+[ext_resource path="res://src/world/board.gd" type="Script" id=161]
+[ext_resource path="res://src/graphics/materials/selection_box.tres" type="Material" id=162]
+[ext_resource path="res://src/gui/flux/flux_mod_popup.tscn" type="PackedScene" id=163]
+[ext_resource path="res://src/world/world_environment.gd" type="Script" id=164]
+[ext_resource path="res://assets/icons/18px/window_close.png" type="Texture" id=168]
+[ext_resource path="res://src/gui/scripts/button_user_guide.gd" type="Script" id=170]
+[ext_resource path="res://assets/icons/18px/manual.png" type="Texture" id=171]
+[ext_resource path="res://src/gui/scripts/simulation_sliders.gd" type="Script" id=192]
+[ext_resource path="res://src/gui/scripts/file_controls.gd" type="Script" id=201]
+[ext_resource path="res://assets/icons/18px/binary.png" type="Texture" id=223]
+[ext_resource path="res://src/assembler/assembler.gd" type="Script" id=285]
+[ext_resource path="res://src/gui/docking/docking_system.gd" type="Script" id=293]
+[ext_resource path="res://src/gui/scripts/tabs_bar.gd" type="Script" id=296]
+[ext_resource path="res://src/world/background.gd" type="Script" id=297]
+[ext_resource path="res://src/gui/scripts/btn_vd_screen.gd" type="Script" id=299]
+[ext_resource path="res://src/gui/scripts/btn_vd_seven_segments.gd" type="Script" id=300]
+[ext_resource path="res://src/editor/tool_bucket.gd" type="Script" id=302]
+[ext_resource path="res://src/gui/reusable_scripts/button_signal.gd" type="Script" id=312]
+[ext_resource path="res://src/gui/scripts/simulation_telemetry_label.gd" type="Script" id=318]
+[ext_resource path="res://src/gui/flux/flux_spinbox.tscn" type="PackedScene" id=319]
+[ext_resource path="res://src/gui/scripts/button_recent_projects.gd" type="Script" id=326]
+[ext_resource path="res://src/gui/scripts/button_sample_projects.gd" type="Script" id=327]
+[ext_resource path="res://src/editor/tool_array_pencil_eraser.gd" type="Script" id=328]
+[ext_resource path="res://src/editor/tool_selection.gd" type="Script" id=329]
+[ext_resource path="res://src/editor/tool_color_picker.gd" type="Script" id=330]
+[ext_resource path="res://src/editor/shortcuts.gd" type="Script" id=331]
+[ext_resource path="res://src/main/screenshot.gd" type="Script" id=333]
+[ext_resource path="res://src/main/input_blocker.gd" type="Script" id=335]
+[ext_resource path="res://src/world/vmem_pixels_renderer.gd" type="Script" id=336]
+
+[sub_resource type="Environment" id=1]
+
+[sub_resource type="World" id=2]
+environment = SubResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 19 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 0.14902 )
+draw_center = false
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 7
+shadow_color = Color( 0.0823529, 0.0980392, 0.137255, 0.752941 )
+shadow_size = 16
+anti_aliasing = false
+
+[sub_resource type="ViewportTexture" id=7]
+viewport_path = NodePath("World/CircuitRenderer/PrepassViewport")
+
+[sub_resource type="Environment" id=8]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 1.1
+glow_hdr_scale = 4.0
+glow_bicubic_upscale = true
+
+[sub_resource type="StyleBoxFlat" id=9]
+content_margin_left = 4.0
+content_margin_right = 4.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.0901961, 0.113725, 0.152941, 1 )
+shadow_color = Color( 0.0509804, 0.0588235, 0.113725, 0.329412 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.737255, 0.839216, 1, 0.109804 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+border_color = Color( 0.164706, 0.207843, 0.254902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+shadow_color = Color( 0.054902, 0.0745098, 0.117647, 0.156863 )
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id=12]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_right = 2.0
+bg_color = Color( 0.156863, 0.192157, 0.25098, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -2
+font_data = ExtResource( 26 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+content_margin_left = 6.0
+content_margin_right = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0, 0.8, 0.454902, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color( 0.0745098, 0.0823529, 0.12549, 0.415686 )
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id=16]
+draw_center = false
+
+[sub_resource type="DynamicFont" id=17]
+use_mipmaps = true
+use_filter = true
+extra_spacing_bottom = -2
+extra_spacing_char = -1
+font_data = ExtResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=28]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+border_color = Color( 0.164706, 0.207843, 0.254902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+shadow_color = Color( 0.054902, 0.0745098, 0.117647, 0.156863 )
+shadow_size = 16
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=18]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.105882, 0.129412, 0.168627, 1 )
+corner_detail = 1
+anti_aliasing = false
+
+[sub_resource type="Theme" id=19]
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.631373, 0.666667, 0.745098, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 0
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = SubResource( 18 )
+LineEdit/styles/normal = SubResource( 18 )
+LineEdit/styles/read_only = SubResource( 18 )
+
+[sub_resource type="StyleBoxFlat" id=20]
+bg_color = Color( 1, 0.843137, 0.513726, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=21]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.0901961, 0.113725, 0.152941, 1 )
+border_color = Color( 0.164706, 0.207843, 0.254902, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+shadow_color = Color( 0.054902, 0.0745098, 0.117647, 0.588235 )
+shadow_size = 16
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.0941176, 0.121569, 0.160784, 1 )
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+shadow_color = Color( 0.0666667, 0.0705882, 0.0941176, 0.239216 )
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=24]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.117647, 0.145098, 0.188235, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=26]
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+draw_center = false
+border_color = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+expand_margin_left = 6.0
+expand_margin_right = 6.0
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+anti_aliasing = false
+
+[node name="Main" type="Node"]
+script = ExtResource( 95 )
+
+[node name="Settings" type="Node" parent="."]
+script = ExtResource( 45 )
+
+[node name="Systems" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Compiler" type="Node" parent="Systems"]
+script = ExtResource( 1 )
+
+[node name="Simulator" type="Node" parent="Systems"]
+script = ExtResource( 6 )
+
+[node name="Editor" type="Node" parent="Systems"]
+script = ExtResource( 24 )
+
+[node name="Viewport" type="Viewport" parent="Systems/Editor"]
+size = Vector2( 16, 32 )
+size_override_stretch = true
+own_world = true
+world = SubResource( 2 )
+transparent_bg = true
+hdr = false
+disable_3d = true
+usage = 1
+render_target_v_flip = true
+render_target_update_mode = 0
+gui_disable_input = true
+
+[node name="TextureRect" type="TextureRect" parent="Systems/Editor/Viewport"]
+visible = false
+material = SubResource( 5 )
+
+[node name="TextureRectRotate" type="TextureRect" parent="Systems/Editor/Viewport"]
+rect_rotation = 90.0
+
+[node name="History" type="Node" parent="Systems/Editor"]
+script = ExtResource( 65 )
+
+[node name="ToolBucket" type="Node" parent="Systems/Editor"]
+script = ExtResource( 302 )
+
+[node name="ToolArrayPencilEraser" type="Node" parent="Systems/Editor"]
+script = ExtResource( 328 )
+
+[node name="ToolSelection" type="Node" parent="Systems/Editor"]
+script = ExtResource( 329 )
+
+[node name="ToolColorPicker" type="Node" parent="Systems/Editor"]
+script = ExtResource( 330 )
+
+[node name="FileSystem" type="Node" parent="Systems"]
+script = ExtResource( 20 )
+
+[node name="Timer" type="Timer" parent="Systems/FileSystem"]
+
+[node name="RecentAndSampleProjects" type="Node" parent="Systems/FileSystem"]
+script = ExtResource( 44 )
+
+[node name="Assembler" type="Node" parent="Systems"]
+script = ExtResource( 285 )
+
+[node name="Timer" type="Timer" parent="Systems/Assembler"]
+one_shot = true
+
+[node name="TimerExternal" type="Timer" parent="Systems/Assembler"]
+autostart = true
+
+[node name="Preprocessor" type="Node" parent="Systems/Assembler"]
+script = ExtResource( 90 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.105882, 0.12549, 0.168627, 1 )
+
+[node name="World" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="UserGuideBG" type="ColorRect" parent="World"]
+visible = false
+margin_right = 2048.0
+margin_bottom = 2048.0
+mouse_filter = 2
+color = Color( 0.117647, 0.141176, 0.180392, 1 )
+
+[node name="Background" type="ColorRect" parent="World"]
+material = ExtResource( 17 )
+margin_left = -3072.0
+margin_top = -3072.0
+margin_right = 5120.0
+margin_bottom = 5120.0
+mouse_filter = 2
+color = Color( 0.23, 0.28, 0.35, 1 )
+script = ExtResource( 297 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="World/Background"]
+script = ExtResource( 34 )
+
+[node name="Board" type="Panel" parent="World"]
+margin_right = 2048.0
+margin_bottom = 2048.0
+rect_min_size = Vector2( 1024, 1024 )
+mouse_filter = 2
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 161 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CircuitRenderer" type="Control" parent="World"]
+mouse_filter = 2
+script = ExtResource( 25 )
+
+[node name="PrepassViewport" type="Viewport" parent="World/CircuitRenderer"]
+size = Vector2( 256, 256 )
+own_world = true
+world = SubResource( 2 )
+transparent_bg = true
+hdr = false
+disable_3d = true
+usage = 1
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="PrepassColorRect" type="ColorRect" parent="World/CircuitRenderer/PrepassViewport"]
+material = ExtResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/PrepassViewport/PrepassColorRect"]
+script = ExtResource( 34 )
+
+[node name="VMEMpixelsRenderer" type="ColorRect" parent="World/CircuitRenderer/PrepassViewport"]
+margin_right = 2048.0
+margin_bottom = 2048.0
+rect_min_size = Vector2( 2048, 2048 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+script = ExtResource( 336 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="World/CircuitRenderer/PrepassViewport/VMEMpixelsRenderer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 2048, 2048 )
+mouse_filter = 2
+
+[node name="Tween" type="Tween" parent="World/CircuitRenderer/PrepassViewport/VMEMpixelsRenderer"]
+
+[node name="VInputInterfaceRenderer" type="TextureRect" parent="World/CircuitRenderer/PrepassViewport"]
+margin_right = 2048.0
+margin_bottom = 2048.0
+rect_min_size = Vector2( 2048, 2048 )
+script = ExtResource( 85 )
+
+[node name="VDisplayRenderer" type="ColorRect" parent="World/CircuitRenderer/PrepassViewport"]
+material = ExtResource( 27 )
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 14 )
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/PrepassViewport/VDisplayRenderer"]
+script = ExtResource( 34 )
+
+[node name="DepthPostProcessing" type="Node2D" parent="World/CircuitRenderer"]
+material = ExtResource( 16 )
+script = ExtResource( 80 )
+texture = SubResource( 7 )
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/DepthPostProcessing"]
+script = ExtResource( 34 )
+
+[node name="DepthPostProcessingOLD" type="TextureRect" parent="World/CircuitRenderer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+material = ExtResource( 16 )
+margin_right = 256.0
+margin_bottom = 256.0
+mouse_filter = 2
+texture = SubResource( 7 )
+stretch_mode = 3
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/DepthPostProcessingOLD"]
+script = ExtResource( 34 )
+
+[node name="DownsamplingPostProcessing" type="TextureRect" parent="World/CircuitRenderer"]
+visible = false
+material = ExtResource( 71 )
+margin_right = 256.0
+margin_bottom = 256.0
+mouse_filter = 2
+texture = SubResource( 7 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/DownsamplingPostProcessing"]
+script = ExtResource( 34 )
+
+[node name="InkSymbolsOverlay" type="TextureRect" parent="World/CircuitRenderer"]
+material = ExtResource( 72 )
+margin_right = 256.0
+margin_bottom = 256.0
+mouse_filter = 2
+texture = SubResource( 7 )
+stretch_mode = 3
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/InkSymbolsOverlay"]
+script = ExtResource( 34 )
+
+[node name="TextureDebug" type="TextureRect" parent="World/CircuitRenderer"]
+visible = false
+material = ExtResource( 79 )
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="GDshaderLoader" type="Node" parent="World/CircuitRenderer/TextureDebug"]
+script = ExtResource( 34 )
+
+[node name="Tween" type="Tween" parent="World/CircuitRenderer"]
+
+[node name="TweenFlatRendering" type="Tween" parent="World/CircuitRenderer"]
+
+[node name="CursorBoard" type="Node2D" parent="World"]
+script = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="World/CursorBoard"]
+centered = false
+
+[node name="SelectionBox" type="Control" parent="World"]
+mouse_filter = 2
+script = ExtResource( 160 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionTexture" type="TextureRect" parent="World/SelectionBox"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.784314 )
+margin_right = 1.0
+margin_bottom = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 13
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionTextureDownsampling" type="TextureRect" parent="World/SelectionBox"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+material = ExtResource( 70 )
+margin_right = 1.0
+margin_bottom = 1.0
+mouse_filter = 2
+mouse_default_cursor_shape = 13
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="World/SelectionBox/SelectionTextureDownsampling"]
+script = ExtResource( 34 )
+
+[node name="DashedLine" type="ColorRect" parent="World/SelectionBox"]
+material = ExtResource( 162 )
+mouse_filter = 2
+color = Color( 1, 1, 1, 0.1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="World/SelectionBox/DashedLine"]
+script = ExtResource( 34 )
+
+[node name="Camera" type="Camera2D" parent="World"]
+visible = false
+current = true
+script = ExtResource( 2 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource( 8 )
+script = ExtResource( 164 )
+
+[node name="Dithering" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Dithering"]
+material = ExtResource( 73 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDshaderLoader" type="Node" parent="Dithering/ColorRect"]
+script = ExtResource( 34 )
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="Interface"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 33 )
+script = ExtResource( 37 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="PanelContainer" parent="Interface/GUI/VBoxContainer"]
+material = ExtResource( 28 )
+margin_right = 1920.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+custom_styles/panel = SubResource( 9 )
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="Interface/GUI/VBoxContainer/Header"]
+
+[node name="GDshaderLoader" type="Node" parent="Interface/GUI/VBoxContainer/Header"]
+script = ExtResource( 34 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header"]
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 1916.0
+margin_bottom = 54.0
+custom_constants/separation = 4
+alignment = 1
+
+[node name="Upper" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer"]
+margin_right = 1912.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 22 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="FileControls" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper"]
+margin_right = 180.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 180, 0 )
+custom_constants/separation = 4
+script = ExtResource( 201 )
+
+[node name="BtnNew" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "New project
+$fs_new_project"
+texture_normal = ExtResource( 46 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "fs_new_file_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnNew" instance=ExtResource( 40 )]
+
+[node name="Panel" type="Panel" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnNew"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnOpen" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Open project
+$fs_open_project"
+texture_normal = ExtResource( 49 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "fs_open_file_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnOpen" instance=ExtResource( 40 )]
+
+[node name="BtnSave" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save project
+$fs_save_project"
+texture_normal = ExtResource( 54 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "fs_direct_save_file_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnSave" instance=ExtResource( 40 )]
+
+[node name="BtnSaveAs" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_left = 96.0
+margin_right = 124.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save project as"
+texture_normal = ExtResource( 55 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "fs_save_as_file_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnSaveAs" instance=ExtResource( 40 )]
+
+[node name="BtnRecent" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_left = 128.0
+margin_right = 156.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Open recent projects and autosaves"
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 56 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 326 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup"]
+margin_right = 260.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 260, 0 )
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer"]
+margin_right = 260.0
+margin_bottom = 161.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 8
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 250.0
+margin_bottom = 151.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox"]
+visible = false
+margin_right = 240.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Recent Projects"
+align = 1
+
+[node name="LbEmpty" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox"]
+margin_right = 240.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 0, 20 )
+text = "Recent projects and autosaves
+will be shown here."
+align = 1
+
+[node name="VBoxManual" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox"]
+margin_top = 45.0
+margin_right = 240.0
+margin_bottom = 91.0
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox/VBoxManual"]
+margin_right = 240.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Recent Projects"
+align = 1
+
+[node name="Button" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox/VBoxManual"]
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 46.0
+text = "Project Name"
+
+[node name="VBoxAutosaved" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox"]
+margin_top = 97.0
+margin_right = 240.0
+margin_bottom = 143.0
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox/VBoxAutosaved"]
+margin_right = 240.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Autosaves"
+align = 1
+
+[node name="Button" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup/PanelContainer/MarginContainer/VBox/VBoxAutosaved"]
+margin_top = 24.0
+margin_right = 240.0
+margin_bottom = 46.0
+text = "Project Name"
+
+[node name="FluxModPopup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent/Popup" instance=ExtResource( 163 )]
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRecent" instance=ExtResource( 40 )]
+
+[node name="VSeparator" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+visible = false
+margin_left = 136.0
+margin_right = 136.0
+margin_bottom = 26.0
+custom_constants/separation = 0
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnUndo" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+visible = false
+margin_left = 160.0
+margin_right = 188.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Undo last action"
+disabled = true
+texture_normal = ExtResource( 48 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ed_undo_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnUndo" instance=ExtResource( 40 )]
+
+[node name="BtnRedo" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+visible = false
+margin_left = 160.0
+margin_right = 188.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Redo last action"
+disabled = true
+texture_normal = ExtResource( 50 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ed_redo_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/BtnRedo" instance=ExtResource( 40 )]
+
+[node name="Control" type="Control" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls"]
+margin_left = 160.0
+margin_right = 160.0
+margin_bottom = 22.0
+
+[node name="LabelAutosaving" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -11.0
+margin_right = 81.0
+margin_bottom = 11.0
+text = "Autosaving"
+align = 1
+valign = 1
+script = ExtResource( 13 )
+
+[node name="Tween" type="Tween" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/FileControls/Control/LabelAutosaving"]
+
+[node name="AlertBar" type="Control" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper"]
+margin_left = 196.0
+margin_right = 1716.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+script = ExtResource( 81 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="FileLabel" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar/HBoxContainer"]
+margin_left = 633.0
+margin_top = 2.0
+margin_right = 722.0
+margin_bottom = 20.0
+hint_tooltip = "new_circuit.vcb"
+mouse_filter = 1
+text = "Project Title"
+align = 2
+valign = 1
+script = ExtResource( 21 )
+
+[node name="VSeparator3" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar/HBoxContainer"]
+margin_left = 726.0
+margin_top = 2.0
+margin_right = 734.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 18 )
+size_flags_vertical = 4
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 13 )
+
+[node name="VersionLabel" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar/HBoxContainer"]
+margin_left = 738.0
+margin_top = 2.0
+margin_right = 887.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 14 )
+text = "Virtual Circuit Board"
+script = ExtResource( 23 )
+
+[node name="BtnBeta" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar/HBoxContainer"]
+visible = false
+modulate = Color( 0.333333, 0.372549, 0.443137, 1 )
+margin_left = 821.0
+margin_right = 837.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 16, 0 )
+hint_tooltip = "Beta build"
+disabled = true
+texture_normal = ExtResource( 68 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "aaaaaaaaaaaaaaaaaaaaaa"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar"]
+
+[node name="Timer" type="Timer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/AlertBar"]
+one_shot = true
+
+[node name="VSeparator7" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper"]
+visible = false
+margin_left = 564.0
+margin_right = 614.0
+margin_bottom = 22.0
+custom_constants/separation = 50
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HelpSettingsAndWindow" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper"]
+margin_left = 1732.0
+margin_right = 1912.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 180, 0 )
+custom_constants/separation = 4
+alignment = 2
+
+[node name="BtnUserGuide" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow"]
+visible = false
+margin_left = 148.0
+margin_right = 176.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "User guide"
+toggle_mode = true
+texture_normal = ExtResource( 171 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 170 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnUserGuide" instance=ExtResource( 40 )]
+
+[node name="BtnSampleProjects" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow"]
+margin_left = 120.0
+margin_right = 148.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Open sample projects"
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 58 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 327 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup"]
+margin_right = 260.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 260, 0 )
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup/Panel"]
+margin_right = 260.0
+margin_bottom = 66.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 8
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup/Panel/MarginContainer"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 250.0
+margin_bottom = 56.0
+custom_constants/separation = 6
+
+[node name="LbSampleProjects" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Sample Projects"
+align = 1
+
+[node name="Button" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 240.0
+margin_bottom = 48.0
+text = "Project Name"
+
+[node name="FluxModPopup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects/Popup" instance=ExtResource( 163 )]
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnSampleProjects" instance=ExtResource( 40 )]
+
+[node name="BtnOptions" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow"]
+margin_left = 152.0
+margin_right = 180.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Options"
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 113 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 145 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions"]
+margin_right = 30.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup"]
+margin_right = 134.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 134, 178 )
+custom_styles/panel = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel"]
+margin_right = 134.0
+margin_bottom = 206.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 8
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 124.0
+margin_bottom = 196.0
+custom_constants/separation = 6
+
+[node name="LbOptions" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_right = 114.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Options"
+align = 1
+
+[node name="BtnFullscreen" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 114.0
+margin_bottom = 48.0
+text = "Fullscreen"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnFullscreen" instance=ExtResource( 67 )]
+
+[node name="BtnSettings" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 114.0
+margin_bottom = 76.0
+text = "Settings"
+script = ExtResource( 312 )
+signal_to_emit = "ot_settings_dialog_requested"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnSettings" instance=ExtResource( 67 )]
+
+[node name="BtnShortcuts" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 114.0
+margin_bottom = 104.0
+text = "Shortcuts"
+script = ExtResource( 312 )
+signal_to_emit = "ot_shortcuts_dialog_requested"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnShortcuts" instance=ExtResource( 67 )]
+
+[node name="BtnChangelog" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 110.0
+margin_right = 114.0
+margin_bottom = 132.0
+text = "Changelog"
+script = ExtResource( 66 )
+event = "ui_dialog_changelog_show"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnChangelog" instance=ExtResource( 67 )]
+
+[node name="BtnAbout" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 138.0
+margin_right = 114.0
+margin_bottom = 160.0
+text = "About"
+script = ExtResource( 312 )
+signal_to_emit = "ot_about_dialog_requested"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnAbout" instance=ExtResource( 67 )]
+
+[node name="BtnQuit" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 166.0
+margin_right = 114.0
+margin_bottom = 188.0
+text = "Quit"
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup/Panel/MarginContainer/VBoxContainer/BtnQuit" instance=ExtResource( 67 )]
+
+[node name="FluxModPopup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions/Popup" instance=ExtResource( 163 )]
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/BtnOptions" instance=ExtResource( 40 )]
+
+[node name="WindowButtons" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow"]
+visible = false
+margin_left = 96.0
+margin_right = 188.0
+margin_bottom = 22.0
+script = ExtResource( 144 )
+
+[node name="BtnMinimize" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/WindowButtons"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save circuit as"
+texture_normal = ExtResource( 122 )
+texture_pressed = ExtResource( 122 )
+texture_hover = ExtResource( 122 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnMaximize" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/WindowButtons"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save circuit as"
+texture_normal = ExtResource( 124 )
+texture_pressed = ExtResource( 124 )
+texture_hover = ExtResource( 124 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnClose" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Upper/HelpSettingsAndWindow/WindowButtons"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save circuit as"
+texture_normal = ExtResource( 168 )
+texture_pressed = ExtResource( 168 )
+texture_hover = ExtResource( 168 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lower" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer"]
+margin_top = 26.0
+margin_right = 1912.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 22 )
+
+[node name="BtnLeftSidebar" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Toggle left sidebar
+$ui_toggle_left_sidebar"
+toggle_mode = true
+texture_normal = ExtResource( 39 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ui_sidebar_left_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/BtnLeftSidebar" instance=ExtResource( 40 )]
+
+[node name="SidebarsControls" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+visible = false
+margin_left = 44.0
+margin_right = 106.0
+margin_bottom = 24.0
+custom_constants/separation = 6
+
+[node name="BtnMockup" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/SidebarsControls"]
+margin_right = 28.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Open project"
+texture_normal = ExtResource( 115 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/SidebarsControls/BtnMockup" instance=ExtResource( 40 )]
+
+[node name="BtnAssemblyEditor" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/SidebarsControls"]
+margin_left = 34.0
+margin_right = 62.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Save project"
+texture_normal = ExtResource( 93 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/SidebarsControls/BtnAssemblyEditor" instance=ExtResource( 40 )]
+
+[node name="VSeparator" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_left = 32.0
+margin_top = 2.0
+margin_right = 40.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 18 )
+size_flags_vertical = 4
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 13 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_left = 44.0
+margin_right = 1708.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="SimulationControls" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer"]
+margin_right = 520.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 488, 0 )
+size_flags_vertical = 4
+custom_constants/separation = 4
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator9" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_right = 4.0
+margin_bottom = 22.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnViewportCompilation" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Compile only the visible portion of the board. This can be
+useful to view the statistics of a specific area in the circuit."
+toggle_mode = true
+texture_normal = ExtResource( 82 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnViewportCompilation" instance=ExtResource( 40 )]
+
+[node name="BtnToggleRun" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 32.0
+margin_right = 138.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 106, 0 )
+hint_tooltip = "Toggle game mode"
+focus_mode = 0
+text = "Simulate"
+script = ExtResource( 146 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnToggleRun" instance=ExtResource( 67 )]
+
+[node name="VSeparator10" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 150.0
+margin_right = 154.0
+margin_bottom = 22.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator3" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 150.0
+margin_top = 2.0
+margin_right = 158.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 18 )
+size_flags_vertical = 4
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 13 )
+
+[node name="BtnToggleRun2" type="Button" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 118.0
+margin_right = 224.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 106, 0 )
+hint_tooltip = "Toggle game mode"
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0.631373, 0.666667, 0.745098, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+custom_colors/font_color_pressed = Color( 0.0745098, 0.0941176, 0.12549, 1 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 15 )
+text = "Simulate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnPreviousFrame" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 142.0
+margin_right = 170.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Previous step
+$sm_prev_update"
+texture_normal = ExtResource( 83 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "sm_prev_step_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnPreviousFrame" instance=ExtResource( 40 )]
+
+[node name="BtnStartPaused" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 174.0
+margin_right = 202.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Start simulation paused"
+toggle_mode = true
+texture_normal = ExtResource( 36 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnStartPaused" instance=ExtResource( 40 )]
+
+[node name="BtnPause" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 142.0
+margin_right = 170.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Pause simulation
+$sm_pause_simulation"
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource( 60 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnPause" instance=ExtResource( 40 )]
+
+[node name="BtnNextFrame" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 206.0
+margin_right = 234.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Next step
+$sm_next_update"
+disabled = true
+texture_normal = ExtResource( 61 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "sm_next_step_request"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnNextFrame" instance=ExtResource( 40 )]
+
+[node name="SpinBoxImproved" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls" instance=ExtResource( 319 )]
+margin_left = 238.0
+margin_right = 280.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 42, 0 )
+hint_tooltip = "Ticks to advance in Step Mode"
+size_flags_vertical = 4
+text = "aaa"
+minval = 1
+maxval = 128
+
+[node name="VSeparator7" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 284.0
+margin_right = 286.0
+margin_bottom = 22.0
+custom_constants/separation = 2
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SimulationSliders" type="Control" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 290.0
+margin_right = 390.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+script = ExtResource( 192 )
+
+[node name="Target" type="HSlider" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/SimulationSliders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+hint_tooltip = "Target simulation speed
+Right-click to type a value instead"
+mouse_default_cursor_shape = 8
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.0
+value = 0.185
+
+[node name="Real" type="HSlider" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/SimulationSliders"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 140, 0 )
+mouse_filter = 2
+size_flags_vertical = 4
+custom_icons/grabber_disabled = ExtResource( 78 )
+custom_icons/grabber_highlight = ExtResource( 78 )
+custom_icons/grabber = ExtResource( 78 )
+custom_styles/slider = SubResource( 16 )
+custom_styles/grabber_area_highlight = SubResource( 16 )
+custom_styles/grabber_area = SubResource( 16 )
+min_value = 0.1
+step = 0.1
+value = 25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpinBoxSpeed" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls" instance=ExtResource( 319 )]
+visible = false
+margin_left = 226.0
+margin_right = 326.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+hint_tooltip = "Target simulation speed
+Right-click to use a slider instead"
+mouse_default_cursor_shape = 8
+text = "5000000"
+minval = 1
+maxval = 5000000
+
+[node name="BtnPaintOverlay" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 338.0
+margin_right = 366.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Render with decoration layers"
+disabled = true
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 111 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnPaintOverlay" instance=ExtResource( 40 )]
+
+[node name="BtnHighlightEntity" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+visible = false
+margin_left = 338.0
+margin_right = 366.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Render with decoration layers"
+disabled = true
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 52 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls/BtnHighlightEntity" instance=ExtResource( 40 )]
+
+[node name="VSeparator8" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 394.0
+margin_right = 396.0
+margin_bottom = 22.0
+custom_constants/separation = 2
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/HBoxContainer/SimulationControls"]
+margin_left = 400.0
+margin_top = 2.0
+margin_right = 520.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 0 )
+mouse_filter = 1
+custom_fonts/font = SubResource( 17 )
+text = "365056 IPS"
+script = ExtResource( 318 )
+
+[node name="AppearanceBar" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_left = 1712.0
+margin_right = 1868.0
+margin_bottom = 22.0
+alignment = 1
+script = ExtResource( 296 )
+
+[node name="BtnEntityHighlight" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+margin_right = 28.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Highlight hovered entity"
+toggle_mode = true
+texture_normal = ExtResource( 76 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ui_entity_highlight_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnEntityHighlight" instance=ExtResource( 40 )]
+
+[node name="BtnVInputConsume" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Allow Virtual Input to consume
+keyboard input from binded keys"
+toggle_mode = true
+texture_normal = ExtResource( 84 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "vd_vinput_consume_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVInputConsume" instance=ExtResource( 40 )]
+
+[node name="BtnPaintOverlayToggle" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Render with decoration layers"
+toggle_mode = true
+texture_normal = ExtResource( 111 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "sm_paint_overlay_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnPaintOverlayToggle" instance=ExtResource( 40 )]
+
+[node name="BtnInkSymbolsOverlay2" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+margin_left = 96.0
+margin_right = 124.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Display ink symbols when zoomed-in.
+Right-click to toggle symbols for traces"
+mouse_default_cursor_shape = 8
+toggle_mode = true
+texture_normal = ExtResource( 74 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ui_ink_symbols_overlay_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2" instance=ExtResource( 40 )]
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2"]
+script = ExtResource( 10 )
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 200, 56 )
+custom_styles/panel = SubResource( 28 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2/Popup/PanelContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 192.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2/Popup/PanelContainer/VBoxContainer"]
+margin_right = 184.0
+margin_bottom = 18.0
+text = "Ink Symbols Overlay"
+align = 1
+valign = 1
+
+[node name="CkBtn" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2/Popup/PanelContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 22.0
+margin_right = 184.0
+margin_bottom = 40.0
+title = "Show traces symbols"
+
+[node name="FluxModPopup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnInkSymbolsOverlay2/Popup" instance=ExtResource( 163 )]
+
+[node name="BtnFlatRendering" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+margin_left = 128.0
+margin_right = 156.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Flat rendering"
+toggle_mode = true
+texture_normal = ExtResource( 75 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ui_flat_rendering_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnFlatRendering" instance=ExtResource( 40 )]
+
+[node name="BtnCodeEditor" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+visible = false
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Toggle assembly editor"
+toggle_mode = true
+pressed = true
+texture_normal = ExtResource( 112 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnCodeEditor" instance=ExtResource( 40 )]
+
+[node name="BtnVDDisplayPixel" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+visible = false
+margin_left = 322.0
+margin_right = 350.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Display"
+texture_normal = ExtResource( 141 )
+texture_pressed = ExtResource( 141 )
+texture_hover = ExtResource( 141 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 299 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel"]
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup"]
+margin_right = 134.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 164, 250 )
+custom_styles/panel = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 160.0
+margin_bottom = 246.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 148.0
+margin_bottom = 234.0
+custom_constants/separation = 10
+
+[node name="CheckButton" type="CheckButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 22.0
+text = "Show"
+
+[node name="LabelResolution" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 140.0
+margin_bottom = 54.0
+text = "Resolution"
+align = 1
+
+[node name="HBoxRes" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 140.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="SBResX" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes"]
+margin_left = 8.0
+margin_right = 68.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes/SBResX"]
+margin_right = 60.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes/SBResX"]
+margin_right = 60.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+min_value = 16.0
+max_value = 256.0
+step = 2.0
+value = 16.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SBResY" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes"]
+margin_left = 72.0
+margin_right = 132.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes/SBResY"]
+margin_right = 60.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxRes/SBResY"]
+margin_right = 60.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 60, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+min_value = 16.0
+max_value = 256.0
+step = 2.0
+value = 16.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LabelPosition" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 140.0
+margin_bottom = 122.0
+text = "Position"
+align = 1
+
+[node name="HBoxPos" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 140.0
+margin_bottom = 158.0
+alignment = 1
+
+[node name="SBPosX" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos"]
+margin_right = 68.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosX"]
+margin_right = 68.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosX"]
+margin_right = 68.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 68, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+max_value = 2032.0
+step = 2.0
+value = 32.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SBPosY" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos"]
+margin_left = 72.0
+margin_right = 140.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosY"]
+margin_right = 68.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosY"]
+margin_right = 68.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 68, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+max_value = 2032.0
+step = 2.0
+value = 32.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LabelScale" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 140.0
+margin_bottom = 190.0
+text = "Scale"
+align = 1
+
+[node name="HBoxScale" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 200.0
+margin_right = 140.0
+margin_bottom = 226.0
+alignment = 1
+
+[node name="SBScale" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale"]
+margin_left = 46.0
+margin_right = 94.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale/SBScale"]
+margin_right = 48.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayPixel/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale/SBScale"]
+margin_right = 48.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 48, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BtnVDDisplayValue" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar"]
+visible = false
+margin_left = 322.0
+margin_right = 350.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Display"
+texture_normal = ExtResource( 141 )
+texture_pressed = ExtResource( 141 )
+texture_hover = ExtResource( 141 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 300 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue"]
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup"]
+margin_right = 164.0
+margin_bottom = 314.0
+rect_min_size = Vector2( 164, 314 )
+custom_styles/panel = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 160.0
+margin_bottom = 310.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 148.0
+margin_bottom = 298.0
+custom_constants/separation = 10
+
+[node name="CheckButton" type="CheckButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_right = 140.0
+margin_bottom = 22.0
+text = "Show"
+
+[node name="LabelMainColor" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 140.0
+margin_bottom = 54.0
+text = "Main Color"
+align = 1
+
+[node name="LabelBGColor" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 140.0
+margin_bottom = 86.0
+text = "BG Color"
+align = 1
+
+[node name="LabelDigits" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 140.0
+margin_bottom = 118.0
+text = "Digits"
+align = 1
+
+[node name="HBoxDigits" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 140.0
+margin_bottom = 154.0
+alignment = 1
+
+[node name="SBDigits" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxDigits"]
+margin_left = 46.0
+margin_right = 94.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxDigits/SBDigits"]
+margin_right = 48.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxDigits/SBDigits"]
+margin_right = 48.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 48, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+min_value = 1.0
+max_value = 32.0
+value = 1.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LabelPosition" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 164.0
+margin_right = 140.0
+margin_bottom = 186.0
+text = "Position"
+align = 1
+
+[node name="HBoxPos" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 196.0
+margin_right = 140.0
+margin_bottom = 222.0
+alignment = 1
+
+[node name="SBPosX" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos"]
+margin_right = 68.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosX"]
+margin_right = 68.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosX"]
+margin_right = 68.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 68, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+max_value = 2032.0
+value = 64.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="SBPosY" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos"]
+margin_left = 72.0
+margin_right = 140.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosY"]
+margin_right = 68.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxPos/SBPosY"]
+margin_right = 68.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 68, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+max_value = 2032.0
+value = 64.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LabelScale" type="Label" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 140.0
+margin_bottom = 254.0
+text = "Scale"
+align = 1
+
+[node name="HBoxScale" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer"]
+margin_top = 264.0
+margin_right = 140.0
+margin_bottom = 290.0
+alignment = 1
+
+[node name="SBScale" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale"]
+margin_left = 46.0
+margin_right = 94.0
+margin_bottom = 26.0
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale/SBScale"]
+margin_right = 48.0
+margin_bottom = 26.0
+color = Color( 0.105882, 0.129412, 0.168627, 1 )
+
+[node name="SpinBox" type="SpinBox" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/AppearanceBar/BtnVDDisplayValue/Popup/Panel/MarginContainer/VBoxContainer/HBoxScale/SBScale"]
+margin_right = 48.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 48, 0 )
+hint_tooltip = "Target simulation frequency"
+theme = SubResource( 19 )
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+rounded = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VSeparator7" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+visible = false
+margin_left = 1008.0
+margin_right = 1872.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+custom_styles/separator = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator2" type="VSeparator" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_left = 1872.0
+margin_top = 2.0
+margin_right = 1880.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 18 )
+size_flags_vertical = 4
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 13 )
+
+[node name="BtnRightSidebar" type="TextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower"]
+margin_left = 1884.0
+margin_right = 1912.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 28, 0 )
+hint_tooltip = "Toggle right sidebar
+$ui_toggle_right_sidebar"
+toggle_mode = true
+texture_normal = ExtResource( 43 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 86 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+event = "ui_sidebar_right_toggle_tw"
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/Lower/BtnRightSidebar" instance=ExtResource( 40 )]
+
+[node name="CompilerProgressBar" type="MarginContainer" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer"]
+visible = false
+margin_top = 26.0
+margin_right = 1912.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 22 )
+custom_constants/margin_right = 7
+custom_constants/margin_top = 4
+custom_constants/margin_left = 7
+custom_constants/margin_bottom = 4
+
+[node name="Panel" type="Panel" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/CompilerProgressBar"]
+material = ExtResource( 22 )
+margin_left = 7.0
+margin_top = 4.0
+margin_right = 1905.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 14 )
+custom_styles/panel = SubResource( 20 )
+
+[node name="GDshaderLoader" type="Node" parent="Interface/GUI/VBoxContainer/Header/VBoxContainer/CompilerProgressBar/Panel"]
+script = ExtResource( 34 )
+
+[node name="Body" type="Control" parent="Interface/GUI/VBoxContainer"]
+show_behind_parent = true
+margin_top = 60.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="DockingSystem" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Body"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/separation = 0
+script = ExtResource( 293 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Context" type="Control" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_bottom = 1020.0
+script = ExtResource( 51 )
+
+[node name="SidepanelHolder" type="Control" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+visible = false
+margin_bottom = 1020.0
+
+[node name="PanelSwapPopup" type="Control" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_bottom = 1020.0
+script = ExtResource( 29 )
+
+[node name="Popup" type="Popup" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup"]
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 104, 104 )
+custom_styles/panel = SubResource( 21 )
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 98.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 22 )
+
+[node name="BtnCircuitEditor" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_right = 28.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Circuit Editor"
+texture_normal = ExtResource( 35 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnCircuitEditor" instance=ExtResource( 40 )]
+
+[node name="BtnBlueprintLibrary" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 32.0
+margin_right = 60.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Blueprint Library"
+texture_normal = ExtResource( 91 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnBlueprintLibrary" instance=ExtResource( 40 )]
+
+[node name="BtnUserGuide" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 64.0
+margin_right = 92.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "User Guide"
+texture_normal = ExtResource( 171 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnUserGuide" instance=ExtResource( 40 )]
+
+[node name="BtnAssemblyEditor" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_top = 32.0
+margin_right = 28.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Assembly Editor"
+texture_normal = ExtResource( 112 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnAssemblyEditor" instance=ExtResource( 40 )]
+
+[node name="BtnVMemEditor" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 60.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "VMem Editor"
+texture_normal = ExtResource( 89 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnVMemEditor" instance=ExtResource( 40 )]
+
+[node name="BtnVMemSettings" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 92.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "VMem Settings"
+texture_normal = ExtResource( 223 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnVMemSettings" instance=ExtResource( 40 )]
+
+[node name="BtnVirtualDisplay" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_top = 64.0
+margin_right = 28.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Virtual Display"
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnVirtualDisplay" instance=ExtResource( 40 )]
+
+[node name="BtnVirtualInput" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 32.0
+margin_top = 64.0
+margin_right = 60.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Virtual Input"
+texture_normal = ExtResource( 84 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnVirtualInput" instance=ExtResource( 40 )]
+
+[node name="BtnNotes" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 92.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Notes"
+texture_normal = ExtResource( 47 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup/PanelContainer/HFlowContainer/BtnNotes" instance=ExtResource( 40 )]
+
+[node name="FluxModPopup" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/PanelSwapPopup/Popup" instance=ExtResource( 163 )]
+
+[node name="LeftPadding" type="ColorRect" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_right = 6.0
+margin_bottom = 1020.0
+rect_min_size = Vector2( 6, 0 )
+color = Color( 0.0745098, 0.0941176, 0.12549, 0 )
+
+[node name="LeftSidebar" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_left = 6.0
+margin_right = 406.0
+margin_bottom = 1020.0
+rect_min_size = Vector2( 400, 0 )
+custom_styles/panel = SubResource( 22 )
+script = ExtResource( 87 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar"]
+margin_right = 400.0
+margin_bottom = 1020.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpperDock" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer"]
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 0, 400 )
+custom_constants/separation = 0
+script = ExtResource( 63 )
+
+[node name="Header" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock"]
+margin_right = 400.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+custom_styles/panel = SubResource( 23 )
+
+[node name="Control" type="Control" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header"]
+margin_right = 400.0
+margin_bottom = 30.0
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -11.0
+margin_bottom = 11.0
+size_flags_vertical = 4
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSep" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+visible = false
+margin_right = 4.0
+margin_bottom = 24.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 24 )
+
+[node name="BtnChangeMenu" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 24, 22 )
+hint_tooltip = "Swap panel"
+action_mode = 0
+texture_normal = ExtResource( 38 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer/BtnChangeMenu" instance=ExtResource( 40 )]
+
+[node name="VSep2" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+margin_left = 24.0
+margin_right = 28.0
+margin_bottom = 22.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 24 )
+
+[node name="LbTitle" type="Label" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+margin_left = 28.0
+margin_right = 372.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Menu Title"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="VSep3" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+margin_left = 372.0
+margin_right = 376.0
+margin_bottom = 22.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 24 )
+
+[node name="BtnMaximize" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+margin_left = 376.0
+margin_right = 400.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 24, 22 )
+hint_tooltip = "Maximize dock"
+texture_normal = ExtResource( 41 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer/BtnMaximize" instance=ExtResource( 40 )]
+
+[node name="VSep4" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header/Control/HBoxContainer"]
+visible = false
+margin_left = 364.0
+margin_right = 400.0
+margin_bottom = 22.0
+custom_constants/separation = 36
+custom_styles/separator = SubResource( 24 )
+
+[node name="Panel" type="Panel" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Header"]
+visible = false
+show_behind_parent = true
+margin_right = 400.0
+margin_bottom = 32.0
+custom_styles/panel = SubResource( 25 )
+
+[node name="Container" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 400.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 26 )
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock/Container"]
+margin_right = 400.0
+margin_bottom = 364.0
+size_flags_vertical = 3
+color = Color( 0.156863, 0.192157, 0.25098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/UpperDock"]
+
+[node name="Resizer" type="ColorRect" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer"]
+margin_top = 400.0
+margin_right = 400.0
+margin_bottom = 406.0
+rect_min_size = Vector2( 0, 6 )
+mouse_default_cursor_shape = 9
+color = Color( 0.0588235, 0.0745098, 0.101961, 0 )
+
+[node name="LowerDock" type="VBoxContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer"]
+margin_top = 406.0
+margin_right = 400.0
+margin_bottom = 1020.0
+size_flags_vertical = 3
+custom_constants/separation = 0
+script = ExtResource( 63 )
+
+[node name="Header" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock"]
+margin_right = 400.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+custom_styles/panel = SubResource( 23 )
+
+[node name="Control" type="Control" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header"]
+margin_right = 400.0
+margin_bottom = 30.0
+rect_clip_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -11.0
+margin_bottom = 11.0
+size_flags_vertical = 4
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSep" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+visible = false
+margin_right = 4.0
+margin_bottom = 24.0
+custom_constants/separation = 4
+custom_styles/separator = SubResource( 24 )
+
+[node name="BtnChangeMenu" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 24, 22 )
+hint_tooltip = "Swap panel"
+action_mode = 0
+texture_normal = ExtResource( 38 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer/BtnChangeMenu" instance=ExtResource( 40 )]
+
+[node name="VSep2" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+margin_left = 24.0
+margin_right = 30.0
+margin_bottom = 22.0
+custom_constants/separation = 6
+custom_styles/separator = SubResource( 24 )
+
+[node name="LbTitle" type="Label" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+margin_left = 30.0
+margin_right = 370.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Menu Titleg"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="VSep3" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+margin_left = 370.0
+margin_right = 376.0
+margin_bottom = 22.0
+custom_constants/separation = 6
+custom_styles/separator = SubResource( 24 )
+
+[node name="BtnMaximize" type="TextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+margin_left = 376.0
+margin_right = 400.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 24, 22 )
+hint_tooltip = "Maximize dock"
+texture_normal = ExtResource( 41 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 69 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FluxModTextureButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer/BtnMaximize" instance=ExtResource( 40 )]
+
+[node name="VSep4" type="VSeparator" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+visible = false
+margin_left = 364.0
+margin_right = 400.0
+margin_bottom = 22.0
+custom_constants/separation = 36
+custom_styles/separator = SubResource( 24 )
+
+[node name="BtnSelectMenu" type="OptionButton" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Header/Control/HBoxContainer"]
+visible = false
+margin_left = 10.0
+margin_right = 240.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 230, 0 )
+text = "Menu Title"
+align = 1
+
+[node name="Container" type="PanelContainer" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock"]
+margin_top = 30.0
+margin_right = 400.0
+margin_bottom = 614.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 26 )
+
+[node name="ColorRect" type="ColorRect" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock/Container"]
+margin_right = 400.0
+margin_bottom = 578.0
+size_flags_vertical = 3
+color = Color( 0.156863, 0.192157, 0.25098, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar/VBoxContainer/LowerDock"]
+
+[node name="TweenVCollapse" type="Tween" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar"]
+
+[node name="TweenHCollapseFade" type="Tween" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar"]
+
+[node name="TweenHCollapseSize" type="Tween" parent="Interface/GUI/VBoxContainer/Body/DockingSystem/LeftSidebar"]
+
+[node name="LeftResizer" type="ColorRect" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_left = 406.0
+margin_right = 412.0
+margin_bottom = 1020.0
+rect_min_size = Vector2( 6, 0 )
+mouse_default_cursor_shape = 10
+color = Color( 0.968627, 0, 1, 0 )
+
+[node name="WorldFrame" type="Panel" parent="Interface/GUI/VBoxContainer/Body/DockingSystem"]
+margin_left = 412.0
+margin_right = 1920.0
+margin_bottom = 1020.0
+rect_clip_content = true
+mouse_filter = 2
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InkSwitchMenu" parent="Interface/GUI" instance=ExtResource( 77 )]
+margin_left = 1000.0
+margin_top = 500.0
+margin_right = 1000.0
+margin_bottom = 500.0
+
+[node name="Dialogs" type="Control" parent="Interface/GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DialogFile" parent="Interface/GUI/Dialogs" instance=ExtResource( 8 )]
+
+[node name="DialogUnsaved" parent="Interface/GUI/Dialogs" instance=ExtResource( 7 )]
+
+[node name="DialogQuit" parent="Interface/GUI/Dialogs" instance=ExtResource( 32 )]
+
+[node name="DialogWarning" parent="Interface/GUI/Dialogs" instance=ExtResource( 59 )]
+
+[node name="DialogSettings" parent="Interface/GUI/Dialogs" instance=ExtResource( 31 )]
+
+[node name="DialogShortcuts" parent="Interface/GUI/Dialogs" instance=ExtResource( 57 )]
+
+[node name="DialogAbout" parent="Interface/GUI/Dialogs" instance=ExtResource( 53 )]
+
+[node name="DialogChangelog" parent="Interface/GUI/Dialogs" instance=ExtResource( 64 )]
+
+[node name="DialogSeizureWarning" parent="Interface/GUI/Dialogs" instance=ExtResource( 42 )]
+
+[node name="BackgroundForDialogs" type="ColorRect" parent="Interface/GUI/Dialogs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.117647, 0.145098, 0.188235, 0.866667 )
+script = ExtResource( 62 )
+
+[node name="Tween" type="Tween" parent="Interface/GUI/Dialogs/BackgroundForDialogs"]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="Screenshot" type="Node" parent="Overlay"]
+script = ExtResource( 333 )
+
+[node name="Shortcuts" type="Node" parent="Overlay"]
+script = ExtResource( 331 )
+
+[node name="VInputProcessor" type="Node" parent="Overlay"]
+script = ExtResource( 88 )
+
+[node name="InputBlocker" type="Control" parent="Overlay"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 5
+script = ExtResource( 335 )
