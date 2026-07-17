@@ -2,7 +2,11 @@ extends "res://src/gui/sidepanels/vmem_editor/vmem_editor.gd"
 
 # VMem Extended Address Space — vmem_editor extension.
 #
-# Raises VMEM_ADDRESS_BITS from 20 to 24, giving a 16,777,216-word (64 MiB) address space.
+# Raises VMEM_ADDRESS_BITS from 20 to 21, giving a 2,097,152-word (8 MiB) address space.
+# Note: vcb.exe crashes when vmem_len > 2^21 words — 21 is the confirmed safe maximum.
+# The address-bits spinbox (in VMem Settings) is capped at 21 to match. With DEFAULT
+# latch spacing, only 20 bits fit on the 2048x2048 board; to use the 21st bit, adjust
+# the latch Offset or use the Board Size Modifier mod to grow the board.
 # All methods that reference the vanilla 20-bit constants are overridden here.
 #
 # Overrides:
@@ -15,7 +19,7 @@ extends "res://src/gui/sidepanels/vmem_editor/vmem_editor.gd"
 #   update_lines()                    — fix guard check + widen hex label to %06x
 #   load_external_vmem()              — use new VMEM_MAX_WORDS
 
-const VMEM_ADDRESS_BITS = 24
+const VMEM_ADDRESS_BITS = 21  # native engine cap: vcb.exe crashes with vmem_len > 2^21 words (8 MiB buffer)
 const VMEM_MAX_WORDS = (1 << VMEM_ADDRESS_BITS)
 const VMEM_LAST_ADDRESS = VMEM_MAX_WORDS - 1
 
