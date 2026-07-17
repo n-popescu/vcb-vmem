@@ -12,7 +12,7 @@ extends "res://src/assembler/assembler.gd"
 # LINKERR, TK, TYPE, DONT_REPLACE_IDENTIFIERS_LIST, CONSTANT_LINKS, LK are inherited from
 # the parent assembler class and referenced directly — no need to redeclare them.
 
-const VMEM_ADDRESS_BITS = 24
+const VMEM_ADDRESS_BITS = 21  # must match vmem_editor.gd; 21 is the native engine cap
 
 
 func _ready() -> void:
