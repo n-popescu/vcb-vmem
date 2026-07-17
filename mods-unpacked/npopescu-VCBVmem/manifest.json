@@ -1,9 +1,9 @@
 {
 	"name": "VCBVmem",
 	"namespace": "npopescu",
-	"version_number": "1.0.0",
+	"version_number": "1.0.1",
 	"website_url": "https://github.com/n-popescu/vcb-vmem",
-	"description": "Extends the Virtual Circuit Board VMem address space from 20-bit (1,048,576 words) to 24-bit (16,777,216 words) — 16× more addressable memory. Word width stays 32-bit. The address-bits spinbox now goes up to 29 (practical max). Pure GDScript, loads at runtime, never replaces vcb.pck; coexists with other mods.",
+	"description": "Extends the Virtual Circuit Board VMem address space from 20-bit (1,048,576 words) to 24-bit (16,777,216 words) — 16× more addressable memory at no cost to word width (still 32-bit). The address-bits spinbox now goes up to 24. Pure GDScript, loads at runtime, never replaces vcb.pck; coexists with other mods.",
 	"dependencies": [],
 	"extra": {
 		"godot": {
